@@ -114,7 +114,7 @@ $filters = array(
 							<span class="h-6 w-px shrink-0 bg-grey-15" aria-hidden="true"></span>
 							<select
 								name="<?php echo esc_attr( $filter['name'] ); ?>"
-								class="min-w-0 flex-1 appearance-none truncate border-0 bg-transparent p-0 text-base font-medium text-grey-60 focus:ring-0 xl:text-lg"
+								class="min-w-0 flex-1 appearance-none truncate border-0 bg-transparent !bg-none !p-0 text-base font-medium text-grey-60 focus:ring-0 xl:text-lg"
 								aria-label="<?php echo esc_attr( $filter['label'] ); ?>"
 								title="<?php echo esc_attr( $filter['label'] ); ?>"
 							>
