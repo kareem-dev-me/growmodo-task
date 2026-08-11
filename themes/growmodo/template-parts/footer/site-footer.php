@@ -12,7 +12,7 @@ $year = gmdate( 'Y' );
 		<div class="flex w-full max-w-lg shrink-0 flex-col gap-[30px]">
 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="flex items-center gap-2.5 no-underline">
 				<img src="<?php echo esc_url( growmodo_img( 'logo/symbol.svg' ) ); ?>" alt="" width="48" height="48" class="size-12" />
-				<img src="<?php echo esc_url( growmodo_img( 'logo/wordmark.svg' ) ); ?>" alt="Estatein" width="102" height="21" class="h-5 w-auto" />
+				<img src="<?php echo esc_url( growmodo_img( 'logo/wordmark.svg' ) ); ?>" alt="Estatein" width="102" height="21" class="h-[21px] w-auto" />
 			</a>
 
 			<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" class="flex w-full max-w-[423px] items-center gap-2.5 rounded-xl border border-grey-15 bg-grey-08 px-6 py-[18px]">
