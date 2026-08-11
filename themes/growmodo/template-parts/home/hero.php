@@ -88,14 +88,14 @@ $services       = array(
 				<div class="pointer-events-none absolute inset-0 z-20" style="background-image:linear-gradient(234.98deg, rgb(42, 33, 63) 8.76%, rgba(25, 25, 25, 0) 50.09%);"></div>
 			</div>
 
-			<?php /* Mobile: centered on image / text junction. */ ?>
+			<?php /* Mobile: left-aligned on the image / text junction. */ ?>
 			<?php
 			get_template_part(
 				'template-parts/shared/dream',
 				'badge',
 				array(
 					'url'   => $properties_url,
-					'class' => 'absolute start-1/2 bottom-0 z-30 size-[100px] -translate-x-1/2 translate-y-1/2 md:size-[120px] lg:hidden',
+					'class' => 'absolute start-4 bottom-0 z-30 size-[100px] translate-y-1/2 md:start-8 md:size-[120px] lg:hidden',
 				)
 			);
 			?>
