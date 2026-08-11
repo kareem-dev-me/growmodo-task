@@ -103,4 +103,65 @@
   .property-badge {
     @apply inline-flex items-center gap-1 rounded-[28px] border border-grey-15 bg-grey-10 px-3.5 py-2 text-lg font-medium leading-[1.5] text-absolute-white;
   }
+
+  /* Figma hero circular badge (curved text + center arrow) — CSS, no image */
+  .dream-badge {
+    @apply relative grid aspect-square place-items-center rounded-full border-[1.6px] border-grey-15 bg-grey-08 no-underline;
+  }
+
+  .dream-badge__text {
+    @apply pointer-events-none absolute inset-0;
+  }
+
+  .dream-badge__char {
+    position: absolute;
+    left: 50%;
+    bottom: 50%;
+    display: flex;
+    width: 1.15em;
+    height: 43%;
+    margin-left: -0.575em;
+    align-items: flex-start;
+    justify-content: center;
+    font-size: clamp(0.48rem, 7.2%, 0.7rem);
+    font-weight: 500;
+    line-height: 1;
+    color: #ffffff;
+    transform: rotate(calc((360deg / var(--dream-badge-chars)) * var(--i)));
+    transform-origin: center bottom;
+  }
+
+  .dream-badge__core {
+    @apply relative z-10 grid aspect-square w-[45.5%] place-items-center rounded-full border-[1.6px] border-grey-15 bg-grey-10;
+  }
+
+  .dream-badge__arrow {
+    position: relative;
+    width: 34%;
+    height: 34%;
+  }
+
+  .dream-badge__arrow::before {
+    content: "";
+    position: absolute;
+    left: 18%;
+    top: 48%;
+    width: 72%;
+    height: 2.2px;
+    border-radius: 999px;
+    background: #ffffff;
+    transform: rotate(-45deg);
+    transform-origin: center;
+  }
+
+  .dream-badge__arrow::after {
+    content: "";
+    position: absolute;
+    top: 14%;
+    right: 14%;
+    width: 42%;
+    height: 42%;
+    border-top: 2.2px solid #ffffff;
+    border-right: 2.2px solid #ffffff;
+  }
 }

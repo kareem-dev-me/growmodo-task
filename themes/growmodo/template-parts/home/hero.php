@@ -85,36 +85,30 @@ $services       = array(
 			/>
 			<div class="pointer-events-none absolute inset-0 z-20" style="background-image:linear-gradient(234.98deg, rgb(42, 33, 63) 8.76%, rgba(25, 25, 25, 0) 50.09%);"></div>
 
-			<?php /* Mobile / tablet: badge sits on the hero image (Figma mobile). */ ?>
-			<a
-				href="<?php echo esc_url( $properties_url ); ?>"
-				class="absolute start-4 top-[42%] z-30 size-[100px] -translate-y-1/2 md:size-[120px] lg:hidden"
-				aria-label="Discover your dream property"
-			>
-				<img
-					src="<?php echo esc_url( growmodo_img( 'hero/dream-badge.svg' ) ); ?>"
-					alt=""
-					width="175"
-					height="175"
-					class="size-full"
-				/>
-			</a>
+			<?php /* Mobile / tablet: badge on hero image. */ ?>
+			<?php
+			get_template_part(
+				'template-parts/shared/dream',
+				'badge',
+				array(
+					'url'   => $properties_url,
+					'class' => 'absolute start-4 top-[42%] z-30 size-[100px] -translate-y-1/2 md:size-[120px] lg:hidden',
+				)
+			);
+			?>
 		</div>
 
-		<?php /* Desktop: badge overlaps text/image seam (Figma 175×175). */ ?>
-		<a
-			href="<?php echo esc_url( $properties_url ); ?>"
-			class="absolute start-1/2 top-[220px] z-30 hidden size-[129px] -translate-x-1/2 lg:block xl:top-[250px] xl:size-[175px]"
-			aria-label="Discover your dream property"
-		>
-			<img
-				src="<?php echo esc_url( growmodo_img( 'hero/dream-badge.svg' ) ); ?>"
-				alt=""
-				width="175"
-				height="175"
-				class="size-full"
-			/>
-		</a>
+		<?php /* Desktop: badge on text/image seam (Figma 175×175). */ ?>
+		<?php
+		get_template_part(
+			'template-parts/shared/dream',
+			'badge',
+			array(
+				'url'   => $properties_url,
+				'class' => 'absolute start-1/2 top-[220px] z-30 hidden size-[129px] -translate-x-1/2 lg:grid xl:top-[250px] xl:size-[175px]',
+			)
+		);
+		?>
 	</div>
 
 	<div id="features" class="border border-grey-15 bg-grey-08 p-2.5 shadow-[0_0_0_10px_#191919] md:p-5">
