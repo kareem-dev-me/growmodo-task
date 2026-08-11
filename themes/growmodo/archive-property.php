@@ -10,9 +10,9 @@ get_header();
 
 <section class="border-b border-grey-15 bg-grey-10">
 	<div class="container-estatein py-16 md:py-24">
-		<img src="<?php echo esc_url( growmodo_img( 'icons/section-sparkles.svg' ) ); ?>" alt="" width="68" height="30" class="mb-3 h-[30px] w-auto" />
-		<h1 class="text-4xl font-semibold md:text-5xl">Find Your Dream Property</h1>
-		<p class="mt-4 max-w-3xl text-lg font-medium text-grey-60">
+		<img src="<?php echo esc_url( growmodo_img( 'icons/section-sparkles.svg' ) ); ?>" alt="" width="68" height="30" class="mb-3.5 h-[30px] w-[68px]" />
+		<h1 class="heading-section">Find Your Dream Property</h1>
+		<p class="text-body mt-4 max-w-3xl">
 			Welcome to Estatein's Property Listing page, where your dream property awaits. Explore our curated selection of properties.
 		</p>
 	</div>
@@ -20,7 +20,7 @@ get_header();
 
 <section class="container-estatein py-16 md:py-24">
 	<?php if ( have_posts() ) : ?>
-		<div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+		<div class="grid gap-[30px] md:grid-cols-2 xl:grid-cols-3">
 			<?php
 			while ( have_posts() ) :
 				the_post();

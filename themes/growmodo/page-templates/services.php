@@ -35,9 +35,9 @@ $service_blocks = array(
 
 <section class="border-b border-grey-15 bg-grey-10">
 	<div class="container-estatein py-16 md:py-24">
-		<img src="<?php echo esc_url( growmodo_img( 'icons/section-sparkles.svg' ) ); ?>" alt="" width="68" height="30" class="mb-3 h-[30px] w-auto" />
-		<h1 class="text-4xl font-semibold md:text-5xl">Elevate Your Real Estate Experience</h1>
-		<p class="mt-4 max-w-3xl text-lg font-medium text-grey-60">
+		<img src="<?php echo esc_url( growmodo_img( 'icons/section-sparkles.svg' ) ); ?>" alt="" width="68" height="30" class="mb-3.5 h-[30px] w-[68px]" />
+		<h1 class="heading-section">Elevate Your Real Estate Experience</h1>
+		<p class="mt-4 max-w-3xl text-body">
 			Welcome to Estatein's Services page — your gateway to personalized real estate solutions.
 		</p>
 	</div>
@@ -45,9 +45,9 @@ $service_blocks = array(
 
 <?php foreach ( $service_blocks as $block ) : ?>
 	<section id="<?php echo esc_attr( $block['id'] ); ?>" class="container-estatein py-16 md:py-24">
-		<img src="<?php echo esc_url( growmodo_img( 'icons/section-sparkles.svg' ) ); ?>" alt="" width="68" height="30" class="mb-3 h-[30px] w-auto" />
-		<h2 class="text-3xl font-semibold md:text-5xl"><?php echo esc_html( $block['title'] ); ?></h2>
-		<p class="mt-3 max-w-3xl text-lg font-medium text-grey-60"><?php echo esc_html( $block['intro'] ); ?></p>
+		<img src="<?php echo esc_url( growmodo_img( 'icons/section-sparkles.svg' ) ); ?>" alt="" width="68" height="30" class="mb-3.5 h-[30px] w-[68px]" />
+		<h2 class="heading-section"><?php echo esc_html( $block['title'] ); ?></h2>
+		<p class="mt-3 max-w-3xl text-body"><?php echo esc_html( $block['intro'] ); ?></p>
 		<div class="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
 			<?php foreach ( $block['items'] as $title => $copy ) : ?>
 				<article class="card-surface p-8">
@@ -63,7 +63,7 @@ $service_blocks = array(
 	<div class="card-surface flex flex-col gap-6 p-8 md:flex-row md:items-center md:justify-between md:p-12">
 		<div class="max-w-3xl">
 			<h2 class="text-3xl font-semibold md:text-4xl">Smart Investments, Informed Decisions</h2>
-			<p class="mt-3 text-lg font-medium text-grey-60">
+			<p class="mt-3 text-body">
 				Building a real estate portfolio takes insight. Our advisors help you evaluate opportunities with clarity.
 			</p>
 		</div>

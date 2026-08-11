@@ -88,11 +88,12 @@ add_action( 'add_meta_boxes', 'growmodo_property_meta_box' );
 function growmodo_render_property_meta_box( $post ) {
 	wp_nonce_field( 'growmodo_save_property_meta', 'growmodo_property_meta_nonce' );
 	$fields = array(
-		'_price'     => 'Price (e.g. $550,000)',
-		'_bedrooms'  => 'Bedrooms',
-		'_bathrooms' => 'Bathrooms',
-		'_area'      => 'Area (e.g. 2,500)',
-		'_location'  => 'Location',
+		'_price'         => 'Price (e.g. $550,000)',
+		'_bedrooms'      => 'Bedrooms',
+		'_bathrooms'     => 'Bathrooms',
+		'_area'          => 'Area (e.g. 2,500)',
+		'_location'      => 'Location',
+		'_property_type' => 'Type (e.g. Villa)',
 	);
 	echo '<table class="form-table">';
 	foreach ( $fields as $key => $label ) {
@@ -123,7 +124,7 @@ function growmodo_save_property_meta( $post_id ) {
 		return;
 	}
 
-	$keys = array( '_price', '_bedrooms', '_bathrooms', '_area', '_location' );
+	$keys = array( '_price', '_bedrooms', '_bathrooms', '_area', '_location', '_property_type' );
 	foreach ( $keys as $key ) {
 		if ( isset( $_POST[ $key ] ) ) {
 			update_post_meta( $post_id, $key, sanitize_text_field( wp_unslash( $_POST[ $key ] ) ) );
@@ -164,6 +165,7 @@ function growmodo_seed_properties() {
 			'beds'    => '4-Bedroom',
 			'baths'   => '3-Bathroom',
 			'area'    => '2,500 Square Feet',
+			'type'    => 'Villa',
 			'image'   => 'properties/prop-1.png',
 		),
 		array(
@@ -173,6 +175,7 @@ function growmodo_seed_properties() {
 			'beds'    => '2-Bedroom',
 			'baths'   => '2-Bathroom',
 			'area'    => '2,000 Square Feet',
+			'type'    => 'Villa',
 			'image'   => 'properties/prop-2.png',
 		),
 		array(
@@ -182,6 +185,7 @@ function growmodo_seed_properties() {
 			'beds'    => '3-Bedroom',
 			'baths'   => '3-Bathroom',
 			'area'    => '2,200 Square Feet',
+			'type'    => 'Villa',
 			'image'   => 'properties/prop-3.png',
 		),
 	);
@@ -210,6 +214,7 @@ function growmodo_seed_properties() {
 		update_post_meta( $post_id, '_bathrooms', $demo['baths'] );
 		update_post_meta( $post_id, '_area', $demo['area'] );
 		update_post_meta( $post_id, '_location', 'Coastal Estates' );
+		update_post_meta( $post_id, '_property_type', $demo['type'] ?? 'Villa' );
 
 		$path = GROWMODO_DIR . '/assets/images/' . $demo['image'];
 		if ( file_exists( $path ) ) {

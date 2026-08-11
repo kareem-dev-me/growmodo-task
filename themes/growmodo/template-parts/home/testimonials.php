@@ -15,45 +15,47 @@ $testimonials = array(
 	),
 	array(
 		'title'  => 'Efficient and Reliable',
-		'body'   => 'Estatein provided us with top-notch service. They helped us sell our property quickly and at a great price. We couldn\'t be happier with the results.',
+		'body'   => "Estatein provided us with top-notch service. They helped us sell our property quickly and at a great price. We couldn't be happier with the results.",
 		'name'   => 'Emelie Thomson',
 		'place'  => 'USA, Florida',
 		'avatar' => 'avatars/emelie.png',
 	),
 	array(
 		'title'  => 'Trusted Advisors',
-		'body'   => 'The Estatein team guided us through every step. Their expertise and commitment ensured a smooth transaction from start to finish.',
+		'body'   => 'The Estatein team guided us through the entire buying process. Their knowledge and commitment to our needs were impressive. Thank you for your support!',
 		'name'   => 'John Mans',
 		'place'  => 'USA, Nevada',
 		'avatar' => 'avatars/john.png',
 	),
 );
 ?>
-<section id="testimonials" class="container-estatein py-16 md:py-24">
-	<div class="mb-10 flex flex-col gap-6 md:mb-14 md:flex-row md:items-end md:justify-between">
-		<div class="max-w-4xl">
-			<img src="<?php echo esc_url( growmodo_img( 'icons/section-sparkles.svg' ) ); ?>" alt="" width="68" height="30" class="mb-3 h-[30px] w-auto" />
-			<h2 class="text-3xl font-semibold md:text-4xl lg:text-5xl">What Our Clients Say</h2>
-			<p class="mt-3 max-w-3xl text-base font-medium text-grey-60 md:text-lg">
-				Read the success stories and heartfelt testimonials from our valued clients. Discover why they chose Estatein for their real estate needs.
-			</p>
-		</div>
-		<a class="btn-secondary shrink-0 self-start" href="<?php echo esc_url( home_url( '/about/' ) ); ?>">View All Testimonials</a>
-	</div>
+<section id="testimonials" class="container-estatein py-16 md:py-20 xl:py-24">
+	<?php
+	get_template_part(
+		'template-parts/shared/section',
+		'heading',
+		array(
+			'title'        => 'What Our Clients Say',
+			'body'         => 'Read the success stories and heartfelt testimonials from our valued clients. Discover why they chose Estatein for their real estate needs.',
+			'button_label' => 'View All Testimonials',
+			'button_url'   => home_url( '/about/' ),
+		)
+	);
+	?>
 
-	<div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+	<div class="grid gap-[30px] md:grid-cols-2 xl:grid-cols-3">
 		<?php foreach ( $testimonials as $item ) : ?>
-			<article class="card-surface flex h-full flex-col gap-8 p-8 md:p-[50px]">
-				<div class="flex gap-2" aria-label="5 star rating">
+			<article class="card-surface flex h-full flex-col gap-8 rounded-xl p-8 md:gap-10 md:p-[50px]">
+				<div class="flex gap-2.5" aria-label="5 star rating">
 					<?php for ( $i = 0; $i < 5; $i++ ) : ?>
 						<img src="<?php echo esc_url( growmodo_img( 'icons/rating-star.svg' ) ); ?>" alt="" width="44" height="44" class="size-11" />
 					<?php endfor; ?>
 				</div>
-				<div>
-					<h3 class="text-xl font-semibold md:text-2xl"><?php echo esc_html( $item['title'] ); ?></h3>
-					<p class="mt-2.5 text-base font-medium text-grey-60 md:text-lg"><?php echo esc_html( $item['body'] ); ?></p>
+				<div class="flex flex-col gap-3.5">
+					<h3 class="text-xl font-semibold leading-[1.5] md:text-2xl"><?php echo esc_html( $item['title'] ); ?></h3>
+					<p class="text-lg font-medium leading-[1.5] text-absolute-white"><?php echo esc_html( $item['body'] ); ?></p>
 				</div>
-				<div class="mt-auto flex items-center gap-3.5">
+				<div class="mt-auto flex items-center gap-3">
 					<img
 						src="<?php echo esc_url( growmodo_img( $item['avatar'] ) ); ?>"
 						alt=""
@@ -62,9 +64,9 @@ $testimonials = array(
 						class="size-[60px] rounded-full object-cover"
 						loading="lazy"
 					/>
-					<div>
-						<p class="text-lg font-semibold"><?php echo esc_html( $item['name'] ); ?></p>
-						<p class="text-base font-medium text-grey-60"><?php echo esc_html( $item['place'] ); ?></p>
+					<div class="flex flex-col gap-0.5">
+						<p class="text-xl font-medium leading-[1.5]"><?php echo esc_html( $item['name'] ); ?></p>
+						<p class="text-body !text-base md:!text-lg"><?php echo esc_html( $item['place'] ); ?></p>
 					</div>
 				</div>
 			</article>
