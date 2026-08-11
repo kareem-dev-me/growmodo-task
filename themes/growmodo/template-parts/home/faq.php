@@ -1,6 +1,6 @@
 <?php
 /**
- * Home FAQ accordion.
+ * Home FAQ cards (static — matches Figma open cards).
  *
  * @package Growmodo
  */
@@ -34,28 +34,17 @@ $faqs = array(
 	);
 	?>
 
-	<div id="faq-accordion" data-accordion="collapse" class="grid gap-[30px] md:grid-cols-2 xl:grid-cols-3">
-		<?php foreach ( $faqs as $index => $faq ) : ?>
-			<?php
-			$heading_id = 'faq-heading-' . $index;
-			$body_id    = 'faq-body-' . $index;
-			?>
-			<div class="card-surface rounded-xl p-8 md:p-[50px]">
-				<button
-					type="button"
-					id="<?php echo esc_attr( $heading_id ); ?>"
-					data-accordion-target="#<?php echo esc_attr( $body_id ); ?>"
-					aria-expanded="<?php echo 0 === $index ? 'true' : 'false'; ?>"
-					aria-controls="<?php echo esc_attr( $body_id ); ?>"
-					class="flex w-full items-start justify-between gap-4 text-left text-xl font-semibold leading-[1.5] text-absolute-white md:text-2xl"
-				>
-					<span><?php echo esc_html( $faq['q'] ); ?></span>
-				</button>
-				<div id="<?php echo esc_attr( $body_id ); ?>" class="<?php echo 0 === $index ? '' : 'hidden'; ?>" aria-labelledby="<?php echo esc_attr( $heading_id ); ?>">
-					<p class="text-body mt-4"><?php echo esc_html( $faq['a'] ); ?></p>
-					<a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" class="btn-secondary mt-6 inline-flex !bg-grey-10 px-5 py-3.5 text-sm">Read More</a>
-				</div>
-			</div>
+	<div class="grid gap-[30px] md:grid-cols-2 xl:grid-cols-3">
+		<?php foreach ( $faqs as $faq ) : ?>
+			<article class="card-surface flex h-full flex-col rounded-xl p-8 md:p-[50px]">
+				<h3 class="text-xl font-semibold leading-[1.5] text-absolute-white md:text-2xl">
+					<?php echo esc_html( $faq['q'] ); ?>
+				</h3>
+				<p class="text-body mt-4 flex-1"><?php echo esc_html( $faq['a'] ); ?></p>
+				<a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" class="btn-secondary mt-6 inline-flex self-start !bg-grey-10 px-5 py-3.5 text-sm">
+					Read More
+				</a>
+			</article>
 		<?php endforeach; ?>
 	</div>
 </section>

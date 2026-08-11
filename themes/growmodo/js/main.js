@@ -2,13 +2,11 @@ import "../css/main.css";
 import { initCollapses } from "flowbite/lib/esm/components/collapse";
 import { initCarousels } from "flowbite/lib/esm/components/carousel";
 import { initDropdowns } from "flowbite/lib/esm/components/dropdown";
-import { initAccordions } from "flowbite/lib/esm/components/accordion";
 
 document.addEventListener("DOMContentLoaded", () => {
   initCollapses();
   initCarousels();
   initDropdowns();
-  initAccordions();
 
   const banner = document.getElementById("promo-banner");
   const closeBtn = document.getElementById("promo-banner-close");
