@@ -19,3 +19,4 @@ require_once GROWMODO_DIR . '/inc/helpers.php';
 require_once GROWMODO_DIR . '/inc/nav-walker.php';
 require_once GROWMODO_DIR . '/inc/forms.php';
 require_once GROWMODO_DIR . '/inc/cpt-property.php';
+require_once GROWMODO_DIR . '/inc/pages.php';
