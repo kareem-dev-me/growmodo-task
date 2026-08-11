@@ -151,14 +151,12 @@ function growmodo_get_property_meta( $post_id ) {
 }
 
 /**
- * Seed demo properties on theme switch (once).
+ * Demo property payloads (shared by seed + top-up).
+ *
+ * @return array<int, array<string, string>>
  */
-function growmodo_seed_properties() {
-	if ( get_option( 'growmodo_properties_seeded' ) ) {
-		return;
-	}
-
-	$demos = array(
+function growmodo_demo_properties() {
+	return array(
 		array(
 			'title'    => 'Seaside Serenity Villa',
 			'excerpt'  => 'A stunning 4-bedroom, 3-bathroom villa in a peaceful suburban neighborhood.',
@@ -195,45 +193,120 @@ function growmodo_seed_properties() {
 			'year'     => '2020+',
 			'image'    => 'properties/prop-3.png',
 		),
+		array(
+			'title'    => 'Harborview Penthouse',
+			'excerpt'  => 'A refined waterfront penthouse with open living spaces and private terrace views.',
+			'price'    => '$720,000',
+			'beds'     => '3-Bedroom',
+			'baths'    => '2-Bathroom',
+			'area'     => '2,400 Square Feet',
+			'type'     => 'Apartment',
+			'location' => 'Coastal Estates',
+			'year'     => '2020+',
+			'image'    => 'properties/prop-1.png',
+		),
+		array(
+			'title'    => 'Willow Grove Estate',
+			'excerpt'  => 'A family-ready estate surrounded by greenery, ideal for calm suburban living.',
+			'price'    => '$640,000',
+			'beds'     => '4-Bedroom',
+			'baths'    => '3-Bathroom',
+			'area'     => '2,800 Square Feet',
+			'type'     => 'Villa',
+			'location' => 'Suburbia',
+			'year'     => '2010-2019',
+			'image'    => 'properties/prop-2.png',
+		),
+		array(
+			'title'    => 'Skyline Loft Residence',
+			'excerpt'  => 'A modern loft-style residence with floor-to-ceiling windows and city skyline views.',
+			'price'    => '$480,000',
+			'beds'     => '2-Bedroom',
+			'baths'    => '2-Bathroom',
+			'area'     => '1,850 Square Feet',
+			'type'     => 'Townhouse',
+			'location' => 'Metropolitan City',
+			'year'     => '2020+',
+			'image'    => 'properties/prop-3.png',
+		),
 	);
+}
+
+/**
+ * Insert a single demo property.
+ *
+ * @param array<string, string> $demo Demo payload.
+ * @return int Post ID or 0.
+ */
+function growmodo_insert_demo_property( $demo ) {
+	$found = new WP_Query(
+		array(
+			'post_type'              => 'property',
+			'title'                  => $demo['title'],
+			'post_status'            => 'any',
+			'posts_per_page'         => 1,
+			'no_found_rows'          => true,
+			'ignore_sticky_posts'    => true,
+			'update_post_meta_cache' => false,
+			'update_post_term_cache' => false,
+		)
+	);
+	if ( $found->have_posts() ) {
+		return (int) $found->posts[0]->ID;
+	}
+	wp_reset_postdata();
+
+	$post_id = wp_insert_post(
+		array(
+			'post_title'   => $demo['title'],
+			'post_content' => $demo['excerpt'],
+			'post_excerpt' => $demo['excerpt'],
+			'post_status'  => 'publish',
+			'post_type'    => 'property',
+		)
+	);
+
+	if ( is_wp_error( $post_id ) || ! $post_id ) {
+		return 0;
+	}
+
+	update_post_meta( $post_id, '_price', $demo['price'] );
+	update_post_meta( $post_id, '_bedrooms', $demo['beds'] );
+	update_post_meta( $post_id, '_bathrooms', $demo['baths'] );
+	update_post_meta( $post_id, '_area', $demo['area'] );
+	update_post_meta( $post_id, '_location', $demo['location'] ?? 'Coastal Estates' );
+	update_post_meta( $post_id, '_property_type', $demo['type'] ?? 'Villa' );
+	update_post_meta( $post_id, '_build_year', $demo['year'] ?? '2020+' );
+
+	$path = GROWMODO_DIR . '/assets/images/' . $demo['image'];
+	if ( file_exists( $path ) ) {
+		$attach_id = growmodo_sideload_theme_image( $path, $post_id, $demo['title'] );
+		if ( $attach_id ) {
+			set_post_thumbnail( $post_id, $attach_id );
+		}
+	}
+
+	return (int) $post_id;
+}
+
+/**
+ * Seed demo properties on theme switch (once).
+ */
+function growmodo_seed_properties() {
+	if ( get_option( 'growmodo_properties_seeded' ) ) {
+		return;
+	}
 
 	require_once ABSPATH . 'wp-admin/includes/file.php';
 	require_once ABSPATH . 'wp-admin/includes/media.php';
 	require_once ABSPATH . 'wp-admin/includes/image.php';
 
-	foreach ( $demos as $demo ) {
-		$post_id = wp_insert_post(
-			array(
-				'post_title'   => $demo['title'],
-				'post_content' => $demo['excerpt'],
-				'post_excerpt' => $demo['excerpt'],
-				'post_status'  => 'publish',
-				'post_type'    => 'property',
-			)
-		);
-
-		if ( is_wp_error( $post_id ) || ! $post_id ) {
-			continue;
-		}
-
-		update_post_meta( $post_id, '_price', $demo['price'] );
-		update_post_meta( $post_id, '_bedrooms', $demo['beds'] );
-		update_post_meta( $post_id, '_bathrooms', $demo['baths'] );
-		update_post_meta( $post_id, '_area', $demo['area'] );
-		update_post_meta( $post_id, '_location', $demo['location'] ?? 'Coastal Estates' );
-		update_post_meta( $post_id, '_property_type', $demo['type'] ?? 'Villa' );
-		update_post_meta( $post_id, '_build_year', $demo['year'] ?? '2020+' );
-
-		$path = GROWMODO_DIR . '/assets/images/' . $demo['image'];
-		if ( file_exists( $path ) ) {
-			$attach_id = growmodo_sideload_theme_image( $path, $post_id, $demo['title'] );
-			if ( $attach_id ) {
-				set_post_thumbnail( $post_id, $attach_id );
-			}
-		}
+	foreach ( growmodo_demo_properties() as $demo ) {
+		growmodo_insert_demo_property( $demo );
 	}
 
 	update_option( 'growmodo_properties_seeded', 1 );
+	update_option( 'growmodo_properties_topup_v2', 1 );
 	flush_rewrite_rules();
 }
 add_action( 'after_switch_theme', 'growmodo_seed_properties' );
@@ -253,6 +326,33 @@ function growmodo_maybe_seed_properties() {
 	growmodo_seed_properties();
 }
 add_action( 'init', 'growmodo_maybe_seed_properties', 20 );
+
+/**
+ * Top up older installs so the featured carousel has multiple slides.
+ */
+function growmodo_topup_demo_properties() {
+	if ( get_option( 'growmodo_properties_topup_v2' ) ) {
+		return;
+	}
+
+	$count = wp_count_posts( 'property' );
+	$published = $count ? (int) $count->publish : 0;
+	if ( $published >= 6 ) {
+		update_option( 'growmodo_properties_topup_v2', 1 );
+		return;
+	}
+
+	require_once ABSPATH . 'wp-admin/includes/file.php';
+	require_once ABSPATH . 'wp-admin/includes/media.php';
+	require_once ABSPATH . 'wp-admin/includes/image.php';
+
+	foreach ( growmodo_demo_properties() as $demo ) {
+		growmodo_insert_demo_property( $demo );
+	}
+
+	update_option( 'growmodo_properties_topup_v2', 1 );
+}
+add_action( 'init', 'growmodo_topup_demo_properties', 25 );
 
 /**
  * Apply Properties archive search/filter GET params.
