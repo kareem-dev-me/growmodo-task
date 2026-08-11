@@ -20,7 +20,7 @@ $faqs = array(
 	),
 );
 ?>
-<section id="faq" class="container-estatein py-16 md:py-20 xl:py-24">
+<section id="faq" class="container-estatein section-y">
 	<?php
 	get_template_part(
 		'template-parts/shared/section',

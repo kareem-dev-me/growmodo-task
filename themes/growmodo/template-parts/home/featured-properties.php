@@ -15,7 +15,7 @@ $query = new WP_Query(
 
 $properties_url = get_post_type_archive_link( 'property' ) ?: home_url( '/properties/' );
 ?>
-<section id="properties" class="container-estatein py-16 md:py-20 xl:py-24">
+<section id="properties" class="container-estatein section-y">
 	<?php
 	get_template_part(
 		'template-parts/shared/section',
