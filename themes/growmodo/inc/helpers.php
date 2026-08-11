@@ -87,3 +87,73 @@ function growmodo_image_attrs( $attachment_id, $size = 'large', $is_lcp = false 
 
 	return $attrs;
 }
+
+/**
+ * Collect gallery image URLs for a property (featured + attachments + theme fallbacks).
+ *
+ * @param int $post_id Post ID.
+ * @param int $min     Minimum images to return (pads with theme fallbacks).
+ * @return string[]
+ */
+function growmodo_get_property_gallery_urls( $post_id, $min = 9 ) {
+	$urls = array();
+
+	$thumb_id = get_post_thumbnail_id( $post_id );
+	if ( $thumb_id ) {
+		$src = wp_get_attachment_image_url( $thumb_id, 'large' );
+		if ( $src ) {
+			$urls[] = $src;
+		}
+	}
+
+	$attachments = get_attached_media( 'image', $post_id );
+	foreach ( $attachments as $attachment ) {
+		if ( (int) $attachment->ID === (int) $thumb_id ) {
+			continue;
+		}
+		$src = wp_get_attachment_image_url( $attachment->ID, 'large' );
+		if ( $src ) {
+			$urls[] = $src;
+		}
+	}
+
+	$fallbacks = array(
+		growmodo_img( 'properties/prop-1.png' ),
+		growmodo_img( 'properties/prop-2.png' ),
+		growmodo_img( 'properties/prop-3.png' ),
+	);
+
+	$urls = array_values( array_unique( $urls ) );
+
+	$i = 0;
+	while ( count( $urls ) < $min ) {
+		$urls[] = $fallbacks[ $i % count( $fallbacks ) ];
+		++$i;
+	}
+
+	return $urls;
+}
+
+/**
+ * Key features for a property (newline meta or defaults).
+ *
+ * @param int $post_id Post ID.
+ * @return string[]
+ */
+function growmodo_get_property_features( $post_id ) {
+	$raw = (string) get_post_meta( $post_id, '_features', true );
+	if ( $raw ) {
+		$lines = array_filter( array_map( 'trim', preg_split( '/\r\n|\r|\n/', $raw ) ) );
+		if ( $lines ) {
+			return array_values( $lines );
+		}
+	}
+
+	return array(
+		'Expansive oceanfront terrace for outdoor entertaining',
+		'Gourmet kitchen with top-of-the-line appliances',
+		'Private beach access for morning strolls and sunset views',
+		'Master suite with a spa-inspired bathroom and ocean-facing balcony',
+		'Private garage and ample storage space',
+	);
+}

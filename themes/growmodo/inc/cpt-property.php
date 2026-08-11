@@ -146,6 +146,7 @@ function growmodo_get_property_meta( $post_id ) {
 		'bathrooms' => (string) get_post_meta( $post_id, '_bathrooms', true ),
 		'area'      => (string) get_post_meta( $post_id, '_area', true ),
 		'location'  => (string) get_post_meta( $post_id, '_location', true ),
+		'type'      => (string) get_post_meta( $post_id, '_property_type', true ),
 	);
 }
 

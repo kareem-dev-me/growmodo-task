@@ -31,7 +31,7 @@ Front-end loads `dist/theme.css` + `dist/theme.js` with `filemtime` cache bustin
 
 | Content | Approach |
 |--------|----------|
-| Properties | CPT `property` + meta (`_price`, `_bedrooms`, `_bathrooms`, `_area`, `_location`) |
+| Properties | CPT `property` + meta (`_price`, `_bedrooms`, `_bathrooms`, `_area`, `_location`, `_property_type`, optional `_features`) |
 | FAQ / testimonials | Static arrays in template parts |
 | About / Services / Contact | Pages auto-created with templates on theme init |
 | Newsletter / Contact | `admin-post.php` + nonce + honeypot + `wp_mail` |
@@ -72,12 +72,20 @@ Compared against Figma file `7FfQT5aC3gq4wSoY5druDj` (community 1314076616839640
 - Discover grid + Figma pagination chrome
 - Let's Make it Happen inquiry form (`admin-post` + nonce + honeypot)
 
+### Property Details fidelity
+- Header bar (title + location pill + Price), multi-image gallery (thumbs + dual main + prev/next)
+- Description / metrics + Key Features two-column block
+- Inquire About form (shared `growmodo_inquiry` with property context)
+- Comprehensive Pricing Details + property FAQ cards
+- Gallery images: featured → attachments → `properties/prop-*.png` fallbacks
+
 ### Remaining / unavoidable
 - Hero circular badge omits full curved-text path (structure + sizes matched)
 - Sticky header (Figma is static) kept for UX
 - Laptop 1440 frame approximated via fluid Tailwind breakpoints
 - Exact carousel interaction vs Figma arrow chrome is simplified
 - About value/client icons are stroke SVGs matched to Figma glyphs (MCP asset export was rate-limited)
+- Property Details gallery fills reuse theme prop images (Figma MCP export rate-limited); fee amounts are static demo figures keyed to listing style
 
 ## Activation checklist
 
