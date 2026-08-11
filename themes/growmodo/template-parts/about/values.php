@@ -42,10 +42,15 @@ $values = array(
 			<?php foreach ( $values as $value ) : ?>
 				<article class="card-surface flex flex-col gap-4 rounded-[10px] p-6 md:gap-5 md:p-8 xl:p-10">
 					<div class="flex items-center gap-3.5 md:gap-4">
-						<span class="relative inline-flex size-[60px] shrink-0 items-center justify-center md:size-[74px]" aria-hidden="true">
-							<img src="<?php echo esc_url( growmodo_img( 'about/icons/icon-well.svg' ) ); ?>" alt="" width="74" height="74" class="absolute inset-0 size-full" />
-							<img src="<?php echo esc_url( growmodo_img( $value['icon'] ) ); ?>" alt="" width="34" height="34" class="relative z-10 size-5 md:size-[34px]" />
-						</span>
+						<?php
+						get_template_part(
+							'template-parts/shared/icon',
+							'well',
+							array(
+								'icon' => $value['icon'],
+							)
+						);
+						?>
 						<h3 class="text-xl font-semibold leading-[1.5] md:text-2xl"><?php echo esc_html( $value['title'] ); ?></h3>
 					</div>
 					<p class="text-body"><?php echo esc_html( $value['body'] ); ?></p>

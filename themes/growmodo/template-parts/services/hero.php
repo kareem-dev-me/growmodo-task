@@ -52,17 +52,16 @@ $shortcuts      = array(
 						height="34"
 						class="absolute end-[19px] top-[19px] size-[34px]"
 					/>
-					<span class="inline-flex rounded-full border border-purple-75 p-2.5">
-						<span class="inline-flex rounded-full border border-purple-75 p-3.5">
-							<img
-								src="<?php echo esc_url( growmodo_img( $shortcut['icon'] ) ); ?>"
-								alt=""
-								width="34"
-								height="34"
-								class="size-[34px]"
-							/>
-						</span>
-					</span>
+					<?php
+					get_template_part(
+						'template-parts/shared/icon',
+						'well',
+						array(
+							'icon' => $shortcut['icon'],
+							'size' => 'size-[74px] md:size-[82px]',
+						)
+					);
+					?>
 					<span class="text-lg font-semibold leading-[1.5] md:text-xl"><?php echo esc_html( $shortcut['title'] ); ?></span>
 				</a>
 			<?php endforeach; ?>

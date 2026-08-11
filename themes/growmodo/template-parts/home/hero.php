@@ -109,17 +109,16 @@ $services       = array(
 						height="34"
 						class="absolute end-[19px] top-[19px] size-[34px]"
 					/>
-					<span class="inline-flex rounded-full border border-purple-75 p-2.5">
-						<span class="inline-flex rounded-full border border-purple-75 p-3.5">
-							<img
-								src="<?php echo esc_url( growmodo_img( $service['icon'] ) ); ?>"
-								alt=""
-								width="34"
-								height="34"
-								class="size-[34px]"
-							/>
-						</span>
-					</span>
+					<?php
+					get_template_part(
+						'template-parts/shared/icon',
+						'well',
+						array(
+							'icon' => $service['icon'],
+							'size' => 'size-[74px] md:size-[82px]',
+						)
+					);
+					?>
 					<span class="text-xl font-semibold leading-[1.5]"><?php echo esc_html( $service['title'] ); ?></span>
 				</a>
 			<?php endforeach; ?>

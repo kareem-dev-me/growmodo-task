@@ -47,17 +47,16 @@ if ( ! $cards ) {
 				class="<?php echo esc_attr( $card_class ); ?>"
 			>
 				<div class="flex items-center gap-3.5 md:gap-4">
-					<span class="inline-flex shrink-0 rounded-full border border-purple-75 p-2.5" aria-hidden="true">
-						<span class="inline-flex rounded-full border border-purple-75 p-3.5">
-							<img
-								src="<?php echo esc_url( growmodo_img( $card['icon'] ) ); ?>"
-								alt=""
-								width="34"
-								height="34"
-								class="size-[34px]"
-							/>
-						</span>
-					</span>
+					<?php
+					get_template_part(
+						'template-parts/shared/icon',
+						'well',
+						array(
+							'icon' => $card['icon'],
+							'size' => 'size-[74px] md:size-[82px]',
+						)
+					);
+					?>
 					<h3 class="text-xl font-semibold leading-[1.5] md:text-2xl"><?php echo esc_html( $card['title'] ); ?></h3>
 				</div>
 				<p class="text-body"><?php echo esc_html( $card['body'] ); ?></p>
