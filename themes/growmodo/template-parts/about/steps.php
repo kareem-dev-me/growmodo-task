@@ -50,15 +50,13 @@ $steps = array(
 	);
 	?>
 
-	<div class="grid gap-x-[30px] gap-y-10 md:grid-cols-2 xl:grid-cols-3 xl:gap-y-[50px]">
+	<div class="grid gap-x-6 gap-y-10 md:grid-cols-2 xl:grid-cols-3 xl:gap-y-[78px]">
 		<?php foreach ( $steps as $step ) : ?>
 			<article class="step-card">
 				<p class="step-card__label">Step <?php echo esc_html( $step['num'] ); ?></p>
 				<div class="step-card__body">
-					<h3 class="text-xl font-semibold leading-[1.5] md:text-2xl xl:text-[26px]">
-						<?php echo esc_html( $step['title'] ); ?>
-					</h3>
-					<p class="text-body mt-3.5 md:mt-5"><?php echo esc_html( $step['body'] ); ?></p>
+					<h3 class="step-card__title"><?php echo esc_html( $step['title'] ); ?></h3>
+					<p class="step-card__text"><?php echo esc_html( $step['body'] ); ?></p>
 				</div>
 			</article>
 		<?php endforeach; ?>
