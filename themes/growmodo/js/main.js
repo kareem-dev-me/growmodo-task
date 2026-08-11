@@ -94,8 +94,10 @@ function initFeaturedCarousel() {
     let index = 0;
 
     const perView = () => {
-      if (window.matchMedia("(min-width: 1280px)").matches) return Math.min(3, slides.length);
-      if (window.matchMedia("(min-width: 768px)").matches) return Math.min(2, slides.length);
+      const perXl = Number(root.dataset.perXl) || 3;
+      const perMd = Number(root.dataset.perMd) || 2;
+      if (window.matchMedia("(min-width: 1280px)").matches) return Math.min(perXl, slides.length);
+      if (window.matchMedia("(min-width: 768px)").matches) return Math.min(perMd, slides.length);
       return 1;
     };
 

@@ -44,31 +44,17 @@ $total_slides = max( 1, (int) $wp_query->post_count );
 				</div>
 			</div>
 
-			<div class="mt-8 flex items-center justify-between border-t border-grey-15 pt-5 xl:mt-[50px]">
-				<p class="text-lg font-medium leading-[1.5] text-grey-60 md:text-xl" aria-live="polite">
-					<span class="text-absolute-white" data-featured-current>01</span>
-					of
-					<span data-featured-total><?php echo esc_html( str_pad( (string) $total_slides, 2, '0', STR_PAD_LEFT ) ); ?></span>
-				</p>
-				<div class="flex gap-2.5">
-					<button
-						type="button"
-						class="inline-flex size-[58px] items-center justify-center rounded-full border border-grey-15 bg-transparent transition hover:bg-grey-10"
-						data-featured-prev
-						aria-label="Previous properties"
-					>
-						<img src="<?php echo esc_url( growmodo_img( 'icons/chevron-left.svg' ) ); ?>" alt="" width="30" height="30" class="size-[30px]" />
-					</button>
-					<button
-						type="button"
-						class="inline-flex size-[58px] items-center justify-center rounded-full border border-grey-15 bg-grey-10 transition hover:bg-grey-08"
-						data-featured-next
-						aria-label="Next properties"
-					>
-						<img src="<?php echo esc_url( growmodo_img( 'icons/chevron-right.svg' ) ); ?>" alt="" width="30" height="30" class="size-[30px]" />
-					</button>
-				</div>
-			</div>
+			<?php
+			get_template_part(
+				'template-parts/shared/carousel',
+				'controls',
+				array(
+					'total'      => $total_slides,
+					'prev_label' => 'Previous properties',
+					'next_label' => 'Next properties',
+				)
+			);
+			?>
 		</div>
 	<?php else : ?>
 		<p class="text-body">No properties match your search. Try adjusting filters or check back soon.</p>

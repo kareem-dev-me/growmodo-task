@@ -59,10 +59,10 @@ $count = count( $urls );
 	</div>
 
 	<div class="mt-6 flex justify-center gap-2.5 md:mt-8">
-		<button type="button" id="property-gallery-next" class="inline-flex items-center justify-center rounded-full border border-grey-15 bg-grey-10 p-3.5 transition hover:bg-grey-08" aria-label="Next images">
+		<button type="button" id="property-gallery-next" class="inline-flex size-[58px] items-center justify-center rounded-full border border-grey-15 bg-grey-10 transition hover:bg-grey-08" aria-label="Next images">
 			<img src="<?php echo esc_url( growmodo_img( 'icons/chevron-right.svg' ) ); ?>" alt="" width="30" height="30" class="size-[30px]" />
 		</button>
-		<button type="button" id="property-gallery-prev" class="inline-flex items-center justify-center rounded-full border border-grey-15 bg-grey-08 p-3.5 transition hover:bg-grey-10" aria-label="Previous images">
+		<button type="button" id="property-gallery-prev" class="inline-flex size-[58px] items-center justify-center rounded-full border border-grey-15 bg-transparent transition hover:bg-grey-10" aria-label="Previous images">
 			<img src="<?php echo esc_url( growmodo_img( 'icons/chevron-left.svg' ) ); ?>" alt="" width="30" height="30" class="size-[30px]" />
 		</button>
 	</div>

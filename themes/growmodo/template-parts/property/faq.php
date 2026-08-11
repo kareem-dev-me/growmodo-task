@@ -1,6 +1,6 @@
 <?php
 /**
- * Single property — purchase FAQ cards.
+ * Single property — purchase FAQ cards (carousel, same as home featured).
  *
  * @package Growmodo
  */
@@ -35,31 +35,41 @@ $total = count( $faqs );
 	);
 	?>
 
-	<div class="grid gap-[30px] md:grid-cols-2 xl:grid-cols-3">
-		<?php foreach ( $faqs as $faq ) : ?>
-			<article class="card-surface flex h-full flex-col rounded-xl p-8 md:p-[50px]">
-				<h3 class="text-xl font-semibold leading-[1.5] text-absolute-white md:text-2xl">
-					<?php echo esc_html( $faq['q'] ); ?>
-				</h3>
-				<p class="text-body mt-4 flex-1"><?php echo esc_html( $faq['a'] ); ?></p>
-				<a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" class="btn-secondary mt-6 inline-flex self-start !bg-grey-10 px-5 py-3.5 text-sm">
-					Read More
-				</a>
-			</article>
-		<?php endforeach; ?>
-	</div>
-
-	<div class="mt-8 flex items-center justify-between border-t border-grey-15 pt-5">
-		<p class="text-lg font-medium text-grey-60">
-			<span class="text-absolute-white">01</span> of <?php echo esc_html( str_pad( (string) $total, 2, '0', STR_PAD_LEFT ) ); ?>
-		</p>
-		<div class="flex gap-2.5">
-			<span class="inline-flex items-center justify-center rounded-full border border-grey-15 bg-grey-08 p-3.5 opacity-50" aria-hidden="true">
-				<img src="<?php echo esc_url( growmodo_img( 'icons/chevron-left.svg' ) ); ?>" alt="" width="30" height="30" class="size-[30px]" />
-			</span>
-			<span class="inline-flex items-center justify-center rounded-full border border-grey-15 bg-grey-10 p-3.5 opacity-50" aria-hidden="true">
-				<img src="<?php echo esc_url( growmodo_img( 'icons/chevron-right.svg' ) ); ?>" alt="" width="30" height="30" class="size-[30px]" />
-			</span>
+	<div class="relative" data-featured-carousel>
+		<div class="overflow-hidden">
+			<div
+				class="flex gap-5 transition-transform duration-500 ease-out will-change-transform md:gap-[30px]"
+				data-featured-track
+			>
+				<?php foreach ( $faqs as $faq ) : ?>
+					<div
+						class="w-full min-w-0 shrink-0 basis-full md:basis-[calc((100%-1.875rem)/2)] xl:basis-[calc((100%-3.75rem)/3)]"
+						data-featured-slide
+					>
+						<article class="card-surface flex h-full flex-col rounded-xl p-8 md:p-[50px]">
+							<h3 class="text-xl font-semibold leading-[1.5] text-absolute-white md:text-2xl">
+								<?php echo esc_html( $faq['q'] ); ?>
+							</h3>
+							<p class="text-body mt-4 flex-1"><?php echo esc_html( $faq['a'] ); ?></p>
+							<a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" class="btn-secondary mt-6 inline-flex self-start !bg-grey-10 px-5 py-3.5 text-sm">
+								Read More
+							</a>
+						</article>
+					</div>
+				<?php endforeach; ?>
+			</div>
 		</div>
+
+		<?php
+		get_template_part(
+			'template-parts/shared/carousel',
+			'controls',
+			array(
+				'total'      => $total,
+				'prev_label' => 'Previous questions',
+				'next_label' => 'Next questions',
+			)
+		);
+		?>
 	</div>
 </section>
