@@ -101,7 +101,7 @@
   }
 
   .property-badge {
-    @apply inline-flex items-center gap-1 rounded-[28px] border border-grey-15 bg-grey-10 px-3.5 py-2 text-lg font-medium leading-[1.5] text-absolute-white;
+    @apply inline-flex h-[43px] items-center gap-1 rounded-[28px] border border-grey-15 bg-grey-10 px-3.5 py-2 text-lg font-medium leading-[1.5] text-absolute-white;
   }
 
   /* Figma hero circular badge 175×175 — Urbanist Medium ~14px ring text */

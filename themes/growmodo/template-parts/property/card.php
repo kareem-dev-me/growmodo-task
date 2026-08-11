@@ -1,6 +1,6 @@
 <?php
 /**
- * Property card — Figma Card 75:564.
+ * Property card — Figma Card 75:564 (512×692).
  *
  * @package Growmodo
  */
@@ -11,15 +11,17 @@ $type    = (string) get_post_meta( $post_id, '_property_type', true );
 if ( '' === $type ) {
 	$type = 'Villa';
 }
+
+$excerpt = wp_trim_words( get_the_excerpt(), 18, '...' );
 ?>
-<article <?php post_class( 'card-surface flex h-full flex-col gap-[30px] overflow-hidden rounded-xl p-6 xl:p-10' ); ?>>
-	<a href="<?php the_permalink(); ?>" class="block aspect-[432/318] overflow-hidden rounded-[10px] no-underline md:h-[318px] md:aspect-auto">
+<article <?php post_class( 'card-surface flex h-full flex-col gap-[30px] rounded-xl border border-grey-15 bg-grey-08 p-6 md:p-[30px] xl:p-10' ); ?>>
+	<a href="<?php the_permalink(); ?>" class="block w-full shrink-0 overflow-hidden rounded-[10px] no-underline">
 		<?php if ( has_post_thumbnail() ) : ?>
 			<?php
 			the_post_thumbnail(
 				'large',
 				array(
-					'class'   => 'size-full object-cover',
+					'class'   => 'aspect-[432/318] h-auto w-full object-cover md:aspect-auto md:h-[318px]',
 					'loading' => 'lazy',
 					'alt'     => the_title_attribute( array( 'echo' => false ) ),
 				)
@@ -31,46 +33,48 @@ if ( '' === $type ) {
 				alt="<?php echo esc_attr( get_the_title() ); ?>"
 				width="432"
 				height="318"
-				class="size-full object-cover"
+				class="aspect-[432/318] h-auto w-full object-cover md:aspect-auto md:h-[318px]"
 				loading="lazy"
 			/>
 		<?php endif; ?>
 	</a>
 
-	<div class="flex flex-1 flex-col gap-[30px]">
+	<div class="flex min-h-0 flex-1 flex-col gap-[30px]">
 		<div class="flex flex-col gap-1.5">
-			<h3 class="text-xl font-semibold leading-[1.5] md:text-2xl">
-				<a href="<?php the_permalink(); ?>" class="text-absolute-white no-underline hover:text-purple-75">
+			<h3 class="text-xl font-semibold leading-[1.5] text-absolute-white xl:text-2xl">
+				<a href="<?php the_permalink(); ?>" class="text-absolute-white no-underline transition hover:text-purple-75">
 					<?php the_title(); ?>
 				</a>
 			</h3>
-			<p class="text-body">
-				<?php echo esc_html( wp_trim_words( get_the_excerpt(), 16, '... ' ) ); ?>
-				<a href="<?php the_permalink(); ?>" class="text-absolute-white underline">Read More</a>
+			<p class="text-base font-medium leading-[1.5] text-grey-60 md:text-lg">
+				<?php echo esc_html( $excerpt ); ?>
+				<a href="<?php the_permalink(); ?>" class="font-medium text-purple-75 underline decoration-solid underline-offset-2 transition hover:text-purple-60">Read More</a>
 			</p>
 		</div>
 
-		<div class="flex flex-nowrap gap-2.5 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-			<span class="property-badge shrink-0 whitespace-nowrap">
-				<img src="<?php echo esc_url( growmodo_img( 'icons/bed.svg' ) ); ?>" alt="" width="24" height="24" class="size-6" />
-				<?php echo esc_html( $meta['bedrooms'] ?: '—' ); ?>
+		<div class="flex flex-wrap gap-2.5">
+			<span class="property-badge">
+				<img src="<?php echo esc_url( growmodo_img( 'icons/bed.svg' ) ); ?>" alt="" width="24" height="24" class="size-6 shrink-0" />
+				<span class="whitespace-nowrap"><?php echo esc_html( $meta['bedrooms'] ?: '—' ); ?></span>
 			</span>
-			<span class="property-badge shrink-0 whitespace-nowrap">
-				<img src="<?php echo esc_url( growmodo_img( 'icons/bath.svg' ) ); ?>" alt="" width="24" height="24" class="size-6" />
-				<?php echo esc_html( $meta['bathrooms'] ?: '—' ); ?>
+			<span class="property-badge">
+				<img src="<?php echo esc_url( growmodo_img( 'icons/bath.svg' ) ); ?>" alt="" width="24" height="24" class="size-6 shrink-0" />
+				<span class="whitespace-nowrap"><?php echo esc_html( $meta['bathrooms'] ?: '—' ); ?></span>
 			</span>
-			<span class="property-badge shrink-0 whitespace-nowrap">
-				<img src="<?php echo esc_url( growmodo_img( 'icons/villa.svg' ) ); ?>" alt="" width="24" height="24" class="size-6" />
-				<?php echo esc_html( $type ); ?>
+			<span class="property-badge">
+				<img src="<?php echo esc_url( growmodo_img( 'icons/villa.svg' ) ); ?>" alt="" width="24" height="24" class="size-6 shrink-0" />
+				<span class="whitespace-nowrap"><?php echo esc_html( $type ); ?></span>
 			</span>
 		</div>
 
-		<div class="mt-auto flex flex-col gap-4 sm:flex-row sm:items-end sm:gap-[50px]">
+		<div class="mt-auto flex flex-col gap-5 sm:flex-row sm:items-center sm:gap-[50px]">
 			<div class="min-w-[103px] shrink-0">
-				<p class="text-body">Price</p>
-				<p class="text-xl font-semibold leading-[1.5] md:text-2xl"><?php echo esc_html( $meta['price'] ?: '—' ); ?></p>
+				<p class="text-base font-medium leading-[1.5] text-grey-60 md:text-lg">Price</p>
+				<p class="text-xl font-semibold leading-[1.5] text-absolute-white xl:text-2xl"><?php echo esc_html( $meta['price'] ?: '—' ); ?></p>
 			</div>
-			<a class="btn-primary w-full flex-1 justify-center whitespace-nowrap" href="<?php the_permalink(); ?>">View Property Details</a>
+			<a class="btn-primary w-full flex-1 justify-center whitespace-nowrap sm:min-h-[63px]" href="<?php the_permalink(); ?>">
+				View Property Details
+			</a>
 		</div>
 	</div>
 </article>
