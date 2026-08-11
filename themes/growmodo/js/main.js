@@ -3,6 +3,39 @@ import { initCollapses } from "flowbite/lib/esm/components/collapse";
 import { initCarousels } from "flowbite/lib/esm/components/carousel";
 import { initDropdowns } from "flowbite/lib/esm/components/dropdown";
 
+function initOfficeTabs() {
+  const root = document.getElementById("office-locations");
+  if (!root) return;
+
+  const tabs = root.querySelectorAll("[data-office-tab]");
+  const cards = root.querySelectorAll(".office-card");
+  if (!tabs.length || !cards.length) return;
+
+  const setActive = (category) => {
+    tabs.forEach((tab) => {
+      const active = tab.dataset.officeTab === category;
+      tab.setAttribute("aria-selected", active ? "true" : "false");
+      tab.classList.toggle("border-grey-15", active);
+      tab.classList.toggle("bg-grey-08", active);
+      tab.classList.toggle("text-absolute-white", active);
+      tab.classList.toggle("border-transparent", !active);
+      tab.classList.toggle("bg-transparent", !active);
+      tab.classList.toggle("text-grey-60", !active);
+    });
+
+    cards.forEach((card) => {
+      const match = category === "all" || card.dataset.officeCategory === category;
+      card.hidden = !match;
+    });
+  };
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      setActive(tab.dataset.officeTab || "all");
+    });
+  });
+}
+
 function initPropertyGallery() {
   const root = document.getElementById("property-gallery");
   if (!root) return;
@@ -48,6 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initCarousels();
   initDropdowns();
   initPropertyGallery();
+  initOfficeTabs();
 
   const banner = document.getElementById("promo-banner");
   const closeBtn = document.getElementById("promo-banner-close");

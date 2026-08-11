@@ -53,19 +53,29 @@ function growmodo_handle_contact() {
 		exit;
 	}
 
-	$name    = isset( $_POST['name'] ) ? sanitize_text_field( wp_unslash( $_POST['name'] ) ) : '';
-	$email   = isset( $_POST['email'] ) ? sanitize_email( wp_unslash( $_POST['email'] ) ) : '';
-	$phone   = isset( $_POST['phone'] ) ? sanitize_text_field( wp_unslash( $_POST['phone'] ) ) : '';
-	$message = isset( $_POST['message'] ) ? sanitize_textarea_field( wp_unslash( $_POST['message'] ) ) : '';
+	$first_name   = isset( $_POST['first_name'] ) ? sanitize_text_field( wp_unslash( $_POST['first_name'] ) ) : '';
+	$last_name    = isset( $_POST['last_name'] ) ? sanitize_text_field( wp_unslash( $_POST['last_name'] ) ) : '';
+	$legacy_name  = isset( $_POST['name'] ) ? sanitize_text_field( wp_unslash( $_POST['name'] ) ) : '';
+	$name         = trim( $first_name . ' ' . $last_name );
+	if ( '' === $name ) {
+		$name = $legacy_name;
+	}
 
-	if ( '' === $name || ! is_email( $email ) || '' === $message ) {
+	$email         = isset( $_POST['email'] ) ? sanitize_email( wp_unslash( $_POST['email'] ) ) : '';
+	$phone         = isset( $_POST['phone'] ) ? sanitize_text_field( wp_unslash( $_POST['phone'] ) ) : '';
+	$inquiry_type  = isset( $_POST['inquiry_type'] ) ? sanitize_text_field( wp_unslash( $_POST['inquiry_type'] ) ) : '';
+	$hear_about    = isset( $_POST['hear_about'] ) ? sanitize_text_field( wp_unslash( $_POST['hear_about'] ) ) : '';
+	$message       = isset( $_POST['message'] ) ? sanitize_textarea_field( wp_unslash( $_POST['message'] ) ) : '';
+	$terms_ok      = ! empty( $_POST['terms'] );
+
+	if ( '' === $name || ! is_email( $email ) || '' === $message || ! $terms_ok ) {
 		wp_safe_redirect( add_query_arg( 'contact', 'invalid', wp_get_referer() ?: home_url( '/contact/' ) ) );
 		exit;
 	}
 
 	$admin   = get_option( 'admin_email' );
 	$subject = 'Estatein contact form: ' . $name;
-	$body    = "Name: {$name}\nEmail: {$email}\nPhone: {$phone}\n\nMessage:\n{$message}\n";
+	$body    = "Name: {$name}\nEmail: {$email}\nPhone: {$phone}\nInquiry Type: {$inquiry_type}\nHow Did You Hear About Us: {$hear_about}\n\nMessage:\n{$message}\n";
 	$headers = array( 'Reply-To: ' . $name . ' <' . $email . '>' );
 	wp_mail( $admin, $subject, $body, $headers );
 
