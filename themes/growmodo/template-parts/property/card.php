@@ -50,27 +50,27 @@ if ( '' === $type ) {
 			</p>
 		</div>
 
-		<div class="flex flex-wrap gap-2.5">
-			<span class="property-badge">
+		<div class="flex flex-nowrap gap-2.5 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+			<span class="property-badge shrink-0 whitespace-nowrap">
 				<img src="<?php echo esc_url( growmodo_img( 'icons/bed.svg' ) ); ?>" alt="" width="24" height="24" class="size-6" />
 				<?php echo esc_html( $meta['bedrooms'] ?: '—' ); ?>
 			</span>
-			<span class="property-badge">
+			<span class="property-badge shrink-0 whitespace-nowrap">
 				<img src="<?php echo esc_url( growmodo_img( 'icons/bath.svg' ) ); ?>" alt="" width="24" height="24" class="size-6" />
 				<?php echo esc_html( $meta['bathrooms'] ?: '—' ); ?>
 			</span>
-			<span class="property-badge">
+			<span class="property-badge shrink-0 whitespace-nowrap">
 				<img src="<?php echo esc_url( growmodo_img( 'icons/villa.svg' ) ); ?>" alt="" width="24" height="24" class="size-6" />
 				<?php echo esc_html( $type ); ?>
 			</span>
 		</div>
 
 		<div class="mt-auto flex flex-col gap-4 sm:flex-row sm:items-end sm:gap-[50px]">
-			<div class="shrink-0">
+			<div class="min-w-[103px] shrink-0">
 				<p class="text-body">Price</p>
 				<p class="text-xl font-semibold leading-[1.5] md:text-2xl"><?php echo esc_html( $meta['price'] ?: '—' ); ?></p>
 			</div>
-			<a class="btn-primary w-full flex-1 justify-center sm:w-auto" href="<?php the_permalink(); ?>">View Property Details</a>
+			<a class="btn-primary w-full flex-1 justify-center whitespace-nowrap" href="<?php the_permalink(); ?>">View Property Details</a>
 		</div>
 	</div>
 </article>
