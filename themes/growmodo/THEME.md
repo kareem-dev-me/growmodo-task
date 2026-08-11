@@ -51,13 +51,23 @@ No page builders. No ACF (core meta boxes only).
 - Lazy-load below-fold images; `fetchpriority` on hero LCP
 - Block library CSS dequeued on front; assets deferred
 
-## 4-hour scope limitations
+## Visual fidelity notes (QA pass)
 
-- Property Details omits deeper Figma modules (floor plans, rich galleries)
-- Circular hero badge is simplified vs. curved Figma text path
-- Testimonials avatars reuse property imagery
-- Laptop-specific Figma frames approximated via fluid Tailwind breakpoints
-- Social links are placeholders (`#`)
+Compared against Figma file `7FfQT5aC3gq4wSoY5druDj` (community 1314076616839640516).
+
+### Fixed
+- Wrong bathtub-as-star asset → section sparkles + rating stars
+- Property card third badge = Villa (not area)
+- Card surface `#141414`, padding/gaps closer to Figma
+- Header centered nav, logo 160×48, banner 18px
+- Testimonial avatars and 44px rating stars
+- Shared section heading partial
+
+### Remaining / unavoidable
+- Hero circular badge omits full curved-text path (structure + sizes matched)
+- Sticky header (Figma is static) kept for UX
+- Laptop 1440 frame approximated via fluid Tailwind breakpoints
+- Exact carousel interaction vs Figma arrow chrome is simplified
 
 ## Activation checklist
 
