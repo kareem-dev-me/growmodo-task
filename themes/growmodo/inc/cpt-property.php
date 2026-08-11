@@ -377,7 +377,7 @@ function growmodo_filter_property_archive( $query ) {
 		$query->set( 's', $q_search );
 	}
 
-	$query->set( 'posts_per_page', 3 );
+	$query->set( 'posts_per_page', 12 );
 
 	$meta_query = array( 'relation' => 'AND' );
 

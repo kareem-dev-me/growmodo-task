@@ -1,14 +1,13 @@
 <?php
 /**
- * Properties archive — Discover grid + Figma pagination.
+ * Properties archive — Discover carousel (same behavior as home featured).
  *
  * @package Growmodo
  */
 
 global $wp_query;
 
-$current = max( 1, (int) get_query_var( 'paged' ), (int) get_query_var( 'page' ) );
-$total   = max( 1, (int) $wp_query->max_num_pages );
+$total_slides = max( 1, (int) $wp_query->post_count );
 ?>
 <section id="discover" class="container-estatein section-y">
 	<?php
@@ -23,48 +22,52 @@ $total   = max( 1, (int) $wp_query->max_num_pages );
 	?>
 
 	<?php if ( have_posts() ) : ?>
-		<div class="grid gap-[30px] md:grid-cols-2 xl:grid-cols-3">
-			<?php
-			while ( have_posts() ) :
-				the_post();
-				get_template_part( 'template-parts/property/card' );
-			endwhile;
-			?>
-		</div>
+		<div id="discover-properties" class="relative" data-featured-carousel>
+			<div class="overflow-hidden">
+				<div
+					class="flex gap-5 transition-transform duration-500 ease-out will-change-transform md:gap-[30px]"
+					data-featured-track
+				>
+					<?php
+					while ( have_posts() ) :
+						the_post();
+						?>
+						<div
+							class="w-full min-w-0 shrink-0 basis-full md:basis-[calc((100%-1.875rem)/2)] xl:basis-[calc((100%-3.75rem)/3)]"
+							data-featured-slide
+						>
+							<?php get_template_part( 'template-parts/property/card' ); ?>
+						</div>
+						<?php
+					endwhile;
+					?>
+				</div>
+			</div>
 
-		<div class="mt-[40px] flex items-center justify-between border-t border-grey-15 pt-5 md:mt-[50px]">
-			<p class="text-xl font-medium text-grey-60">
-				<span class="text-absolute-white"><?php echo esc_html( str_pad( (string) $current, 2, '0', STR_PAD_LEFT ) ); ?></span>
-				of <?php echo esc_html( str_pad( (string) $total, 2, '0', STR_PAD_LEFT ) ); ?>
-			</p>
-			<div class="flex gap-2.5">
-				<?php if ( $current > 1 ) : ?>
-					<a
-						href="<?php echo esc_url( get_pagenum_link( $current - 1 ) ); ?>"
-						class="inline-flex items-center justify-center rounded-full border border-grey-15 p-3.5 transition hover:bg-grey-10"
-						aria-label="Previous page"
+			<div class="mt-8 flex items-center justify-between border-t border-grey-15 pt-5 xl:mt-[50px]">
+				<p class="text-lg font-medium leading-[1.5] text-grey-60 md:text-xl" aria-live="polite">
+					<span class="text-absolute-white" data-featured-current>01</span>
+					of
+					<span data-featured-total><?php echo esc_html( str_pad( (string) $total_slides, 2, '0', STR_PAD_LEFT ) ); ?></span>
+				</p>
+				<div class="flex gap-2.5">
+					<button
+						type="button"
+						class="inline-flex size-[58px] items-center justify-center rounded-full border border-grey-15 bg-transparent transition hover:bg-grey-10"
+						data-featured-prev
+						aria-label="Previous properties"
 					>
 						<img src="<?php echo esc_url( growmodo_img( 'icons/chevron-left.svg' ) ); ?>" alt="" width="30" height="30" class="size-[30px]" />
-					</a>
-				<?php else : ?>
-					<span class="inline-flex cursor-not-allowed items-center justify-center rounded-full border border-grey-15 p-3.5 opacity-40" aria-disabled="true">
-						<img src="<?php echo esc_url( growmodo_img( 'icons/chevron-left.svg' ) ); ?>" alt="" width="30" height="30" class="size-[30px]" />
-					</span>
-				<?php endif; ?>
-
-				<?php if ( $current < $total ) : ?>
-					<a
-						href="<?php echo esc_url( get_pagenum_link( $current + 1 ) ); ?>"
-						class="inline-flex items-center justify-center rounded-full border border-grey-15 bg-grey-10 p-3.5 transition hover:bg-grey-08"
-						aria-label="Next page"
+					</button>
+					<button
+						type="button"
+						class="inline-flex size-[58px] items-center justify-center rounded-full border border-grey-15 bg-grey-10 transition hover:bg-grey-08"
+						data-featured-next
+						aria-label="Next properties"
 					>
 						<img src="<?php echo esc_url( growmodo_img( 'icons/chevron-right.svg' ) ); ?>" alt="" width="30" height="30" class="size-[30px]" />
-					</a>
-				<?php else : ?>
-					<span class="inline-flex cursor-not-allowed items-center justify-center rounded-full border border-grey-15 bg-grey-10 p-3.5 opacity-40" aria-disabled="true">
-						<img src="<?php echo esc_url( growmodo_img( 'icons/chevron-right.svg' ) ); ?>" alt="" width="30" height="30" class="size-[30px]" />
-					</span>
-				<?php endif; ?>
+					</button>
+				</div>
 			</div>
 		</div>
 	<?php else : ?>
