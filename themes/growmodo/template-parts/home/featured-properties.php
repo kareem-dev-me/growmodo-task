@@ -64,21 +64,21 @@ $total_slides   = max( 1, (int) $query->post_count );
 				</p>
 				<div class="flex gap-2.5">
 					<button
-						type="button"
-						class="inline-flex size-[58px] items-center justify-center rounded-full border border-grey-15 bg-transparent transition hover:bg-grey-10"
-						data-featured-prev
-						aria-label="Previous properties"
+					type="button"
+					class="inline-flex size-[58px] items-center justify-center rounded-full border border-grey-15 bg-grey-10 transition hover:bg-grey-08"
+					data-featured-next
+					aria-label="Next properties"
 					>
-						<img src="<?php echo esc_url( growmodo_img( 'icons/chevron-left.svg' ) ); ?>" alt="" width="30" height="30" class="size-[30px]" />
-					</button>
-					<button
-						type="button"
-						class="inline-flex size-[58px] items-center justify-center rounded-full border border-grey-15 bg-grey-10 transition hover:bg-grey-08"
-						data-featured-next
-						aria-label="Next properties"
-					>
-						<img src="<?php echo esc_url( growmodo_img( 'icons/chevron-right.svg' ) ); ?>" alt="" width="30" height="30" class="size-[30px]" />
-					</button>
+					<img src="<?php echo esc_url( growmodo_img( 'icons/chevron-right.svg' ) ); ?>" alt="" width="30" height="30" class="size-[30px]" />
+				</button>
+				<button
+					type="button"
+					class="inline-flex size-[58px] items-center justify-center rounded-full border border-grey-15 bg-transparent transition hover:bg-grey-10"
+					data-featured-prev
+					aria-label="Previous properties"
+				>
+					<img src="<?php echo esc_url( growmodo_img( 'icons/chevron-left.svg' ) ); ?>" alt="" width="30" height="30" class="size-[30px]" />
+				</button>
 				</div>
 			</div>
 		</div>
