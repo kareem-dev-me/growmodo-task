@@ -61,12 +61,12 @@ $meta    = growmodo_get_property_meta( $post_id );
 			</span>
 		</div>
 
-		<div class="mt-auto flex items-end justify-between gap-4">
+		<div class="mt-auto flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
 			<div>
 				<p class="text-sm font-medium text-grey-60">Price</p>
 				<p class="text-lg font-semibold md:text-2xl"><?php echo esc_html( $meta['price'] ?: '—' ); ?></p>
 			</div>
-			<a class="btn-primary px-5 py-3.5 text-sm md:text-lg" href="<?php the_permalink(); ?>">View Property Details</a>
+			<a class="btn-primary w-full px-5 py-3.5 text-sm sm:w-auto md:text-lg" href="<?php the_permalink(); ?>">View Property Details</a>
 		</div>
 	</div>
 </article>

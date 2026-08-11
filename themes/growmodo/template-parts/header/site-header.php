@@ -57,7 +57,7 @@ $contact_url = home_url( '/contact/' );
 
 		<div
 			id="primary-nav"
-			class="absolute start-0 top-full z-40 hidden w-full border-b border-grey-15 bg-grey-10 px-4 py-4 md:static md:flex md:w-auto md:items-center md:justify-center md:border-0 md:bg-transparent md:p-0"
+			class="absolute start-0 top-full z-40 hidden max-h-[80vh] w-full overflow-y-auto border-b border-grey-15 bg-grey-10 px-4 py-4 shadow-lg md:static md:flex md:max-h-none md:w-auto md:items-center md:justify-center md:overflow-visible md:border-0 md:bg-transparent md:p-0 md:shadow-none"
 		>
 			<?php
 			wp_nav_menu(
