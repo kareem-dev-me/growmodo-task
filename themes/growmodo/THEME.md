@@ -63,11 +63,16 @@ Compared against Figma file `7FfQT5aC3gq4wSoY5druDj` (community 1314076616839640
 - Testimonial avatars and 44px rating stars
 - Shared section heading partial
 
+### About Us fidelity
+- Sections: Journey (+ stats + Figma house-model image), Values (intro + 2×2 icon cards), Achievements, 6 Steps, Team (portraits + X button + Say Hello), Valued Clients
+- Assets under `assets/images/about/` (journey + team portraits from Produce UI Figma exports)
+
 ### Remaining / unavoidable
 - Hero circular badge omits full curved-text path (structure + sizes matched)
 - Sticky header (Figma is static) kept for UX
 - Laptop 1440 frame approximated via fluid Tailwind breakpoints
 - Exact carousel interaction vs Figma arrow chrome is simplified
+- About value/client icons are stroke SVGs matched to Figma glyphs (MCP asset export was rate-limited)
 
 ## Activation checklist
 
