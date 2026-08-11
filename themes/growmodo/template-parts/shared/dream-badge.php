@@ -12,7 +12,8 @@
 
 $url   = $args['url'] ?? ( get_post_type_archive_link( 'property' ) ?: home_url( '/properties/' ) );
 $class = $args['class'] ?? '';
-$text  = '✦ Discover Your Dream Property ✦ Discover Your Dream Property ';
+/* Figma 121:1783–1812 = 30 glyphs around the ring. */
+$text  = '✦ Discover Your Dream Property';
 $chars = preg_split( '//u', $text, -1, PREG_SPLIT_NO_EMPTY );
 $total = count( $chars );
 ?>
