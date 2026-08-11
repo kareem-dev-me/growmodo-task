@@ -55,11 +55,10 @@ $steps = array(
 			<article class="step-card">
 				<p class="step-card__label">Step <?php echo esc_html( $step['num'] ); ?></p>
 				<div class="step-card__body">
-					<span class="step-card__glow" aria-hidden="true"></span>
-					<h3 class="relative z-10 text-xl font-semibold leading-[1.5] md:text-2xl xl:text-[26px]">
+					<h3 class="text-xl font-semibold leading-[1.5] md:text-2xl xl:text-[26px]">
 						<?php echo esc_html( $step['title'] ); ?>
 					</h3>
-					<p class="text-body relative z-10"><?php echo esc_html( $step['body'] ); ?></p>
+					<p class="text-body mt-3.5 md:mt-5"><?php echo esc_html( $step['body'] ); ?></p>
 				</div>
 			</article>
 		<?php endforeach; ?>
