@@ -10,7 +10,7 @@ $contact_url = home_url( '/contact/' );
 <header class="site-header sticky top-0 z-50 border-b border-grey-15 bg-grey-10">
 	<div
 		id="promo-banner"
-		class="relative flex items-center justify-center gap-2.5 overflow-hidden border-b border-grey-15 bg-grey-10 px-4 py-[18px] xl:px-[160px]"
+		class="relative grid grid-cols-[2rem_minmax(0,1fr)_2rem] items-center gap-2.5 overflow-hidden border-b border-grey-15 bg-grey-10 px-4 py-[14px] md:py-[18px] xl:grid-cols-[2.5rem_minmax(0,1fr)_2.5rem] xl:gap-4 xl:px-[162px]"
 	>
 		<img
 			src="<?php echo esc_url( growmodo_img( 'patterns/banner-abstract.svg' ) ); ?>"
@@ -20,16 +20,17 @@ $contact_url = home_url( '/contact/' );
 			class="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-50 mix-blend-color-dodge"
 			aria-hidden="true"
 		/>
-		<p class="relative z-10 text-center text-lg font-medium leading-[1.5] text-absolute-white">
+		<span class="relative z-10 size-8 shrink-0" aria-hidden="true"></span>
+		<p class="relative z-10 min-w-0 text-center text-sm font-medium leading-[1.5] text-absolute-white md:text-base xl:text-lg">
 			<span aria-hidden="true">✨</span>Discover Your Dream Property with Estatein
-			<a href="<?php echo esc_url( home_url( '/about/' ) ); ?>" class="ms-1 underline decoration-solid underline-offset-from-font hover:text-purple-75">
+			<a href="<?php echo esc_url( home_url( '/about/' ) ); ?>" class="ms-1 inline-block underline decoration-solid underline-offset-from-font hover:text-purple-75">
 				Learn More
 			</a>
 		</p>
 		<button
 			type="button"
 			id="promo-banner-close"
-			class="absolute end-4 top-1/2 z-10 flex size-8 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 p-1 hover:bg-white/20 xl:end-8"
+			class="relative z-10 flex size-8 shrink-0 items-center justify-center justify-self-end rounded-full bg-white/10 p-1 hover:bg-white/20"
 			aria-label="Dismiss announcement"
 		>
 			<img src="<?php echo esc_url( growmodo_img( 'icons/close.svg' ) ); ?>" alt="" width="24" height="24" class="size-6" />

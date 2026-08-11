@@ -90,7 +90,7 @@ $filters = array(
 
 	<div class="container-estatein mt-10 md:mt-12 xl:mt-14">
 		<form method="get" action="<?php echo esc_url( $archive_url ); ?>" class="flex flex-col gap-5">
-			<div class="flex flex-col gap-3 rounded-xl border border-grey-15 bg-grey-08 p-3.5 shadow-[0_0_0_6px_#191919] sm:flex-row sm:items-center sm:gap-2.5 sm:p-2.5 md:gap-4">
+			<div class="flex flex-col gap-3 rounded-xl border border-grey-15 bg-grey-08 p-3.5 shadow-[0_0_0_6px_#191919] sm:flex-row sm:items-center sm:gap-2.5 sm:p-2.5 md:min-h-[103px] md:gap-4 md:px-[24px] md:py-5">
 				<label for="property-search-q" class="sr-only">Search for a property</label>
 				<input
 					id="property-search-q"
@@ -98,33 +98,36 @@ $filters = array(
 					name="q"
 					value="<?php echo esc_attr( $q_search ); ?>"
 					placeholder="Search For A Property"
-					class="min-w-0 flex-1 border-0 bg-transparent px-3 py-3 text-lg font-medium text-absolute-white placeholder:text-grey-60 focus:ring-0"
+					class="min-w-0 flex-1 border-0 bg-transparent px-1 py-3 text-lg font-medium text-absolute-white placeholder:text-grey-60 focus:ring-0 xl:text-[20px]"
 				/>
-				<button type="submit" class="btn-primary inline-flex shrink-0 items-center justify-center gap-2 !px-5 !py-3.5 md:!px-6">
+				<button type="submit" class="btn-primary inline-flex shrink-0 items-center justify-center gap-2 !px-5 !py-3.5 md:min-h-[63px] md:!px-6">
 					<img src="<?php echo esc_url( growmodo_img( 'icons/search.svg' ) ); ?>" alt="" width="24" height="24" class="size-5 md:size-6" />
 					Find Property
 				</button>
 			</div>
 
-			<div class="grid grid-cols-1 gap-2.5 sm:grid-cols-2 lg:grid-cols-5 lg:gap-2.5 xl:gap-5">
-				<?php foreach ( $filters as $filter ) : ?>
-					<label class="relative flex min-h-[72px] items-center gap-2.5 rounded-xl border border-grey-15 bg-grey-08 px-4 py-3.5">
-						<img src="<?php echo esc_url( growmodo_img( $filter['icon'] ) ); ?>" alt="" width="24" height="24" class="size-6 shrink-0" />
-						<span class="h-6 w-px shrink-0 bg-grey-15" aria-hidden="true"></span>
-						<select
-							name="<?php echo esc_attr( $filter['name'] ); ?>"
-							class="min-w-0 flex-1 appearance-none border-0 bg-transparent p-0 pr-8 text-base font-medium text-absolute-white focus:ring-0 md:text-lg"
-							aria-label="<?php echo esc_attr( $filter['label'] ); ?>"
-						>
-							<?php foreach ( $filter['options'] as $opt_value => $opt_label ) : ?>
-								<option value="<?php echo esc_attr( $opt_value ); ?>" <?php selected( $filter['value'], (string) $opt_value ); ?>>
-									<?php echo esc_html( $opt_label ); ?>
-								</option>
-							<?php endforeach; ?>
-						</select>
-						<img src="<?php echo esc_url( growmodo_img( 'icons/chevron-down.svg' ) ); ?>" alt="" width="24" height="24" class="pointer-events-none absolute right-3 size-6" />
-					</label>
-				<?php endforeach; ?>
+			<div class="rounded-xl border border-grey-15 bg-grey-10 p-2.5 shadow-[0_0_0_6px_#191919]">
+				<div class="grid grid-cols-1 gap-2.5 sm:grid-cols-2 xl:grid-cols-5">
+					<?php foreach ( $filters as $filter ) : ?>
+						<label class="relative flex min-h-[72px] items-center gap-2.5 overflow-hidden rounded-xl border border-grey-15 bg-grey-08 px-4 py-3.5 pe-12">
+							<img src="<?php echo esc_url( growmodo_img( $filter['icon'] ) ); ?>" alt="" width="24" height="24" class="size-6 shrink-0" />
+							<span class="h-6 w-px shrink-0 bg-grey-15" aria-hidden="true"></span>
+							<select
+								name="<?php echo esc_attr( $filter['name'] ); ?>"
+								class="min-w-0 flex-1 appearance-none truncate border-0 bg-transparent p-0 text-base font-medium text-grey-60 focus:ring-0 xl:text-lg"
+								aria-label="<?php echo esc_attr( $filter['label'] ); ?>"
+								title="<?php echo esc_attr( $filter['label'] ); ?>"
+							>
+								<?php foreach ( $filter['options'] as $opt_value => $opt_label ) : ?>
+									<option value="<?php echo esc_attr( $opt_value ); ?>" <?php selected( $filter['value'], (string) $opt_value ); ?>>
+										<?php echo esc_html( $opt_label ); ?>
+									</option>
+								<?php endforeach; ?>
+							</select>
+							<img src="<?php echo esc_url( growmodo_img( 'icons/chevron-down.svg' ) ); ?>" alt="" width="24" height="24" class="pointer-events-none absolute end-3 top-1/2 size-6 -translate-y-1/2" />
+						</label>
+					<?php endforeach; ?>
+				</div>
 			</div>
 		</form>
 	</div>
