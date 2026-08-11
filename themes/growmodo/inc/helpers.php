@@ -49,8 +49,8 @@ function growmodo_fallback_menu() {
 	echo '<ul class="flex flex-col gap-2 md:flex-row md:items-center md:gap-[30px]">';
 	foreach ( $items as $item ) {
 		$class = $item['current']
-			? 'btn-nav no-underline'
-			: 'text-lg font-medium text-absolute-white no-underline hover:text-purple-75';
+			? 'btn-nav-active no-underline'
+			: 'text-lg font-medium leading-[1.5] text-absolute-white no-underline hover:text-purple-75';
 		printf(
 			'<li><a class="%s" href="%s">%s</a></li>',
 			esc_attr( $class ),

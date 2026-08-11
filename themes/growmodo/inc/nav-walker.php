@@ -29,8 +29,8 @@ class Growmodo_Nav_Walker extends Walker_Nav_Menu {
 			|| in_array( 'current-menu-ancestor', $classes, true );
 
 		$link_class = $is_current
-			? 'btn-nav no-underline'
-			: 'text-lg font-medium text-absolute-white no-underline hover:text-purple-75';
+			? 'btn-nav-active no-underline'
+			: 'text-lg font-medium leading-[1.5] text-absolute-white no-underline hover:text-purple-75';
 
 		$output .= '<li class="menu-item">';
 		$output .= '<a class="' . esc_attr( $link_class ) . '" href="' . esc_url( $item->url ) . '">';

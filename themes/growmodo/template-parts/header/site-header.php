@@ -17,12 +17,12 @@ $contact_url = home_url( '/contact/' );
 			alt=""
 			width="1920"
 			height="63"
-			class="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-40"
+			class="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-50 mix-blend-color-dodge"
 			aria-hidden="true"
 		/>
-		<p class="relative z-10 text-center text-sm font-medium text-absolute-white md:text-lg">
-			✨ Discover Your Dream Property with Estatein
-			<a href="<?php echo esc_url( home_url( '/about/' ) ); ?>" class="ms-1 underline decoration-solid underline-offset-2 hover:text-purple-75">
+		<p class="relative z-10 text-center text-lg font-medium leading-[1.5] text-absolute-white">
+			<span aria-hidden="true">✨</span>Discover Your Dream Property with Estatein
+			<a href="<?php echo esc_url( home_url( '/about/' ) ); ?>" class="ms-1 underline decoration-solid underline-offset-from-font hover:text-purple-75">
 				Learn More
 			</a>
 		</p>
@@ -36,10 +36,10 @@ $contact_url = home_url( '/contact/' );
 		</button>
 	</div>
 
-	<nav class="relative flex items-center justify-between gap-4 px-4 py-5 md:px-8 xl:px-[162px]" aria-label="Primary">
-		<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="relative z-10 flex shrink-0 items-center gap-[10px] no-underline">
-			<img src="<?php echo esc_url( growmodo_img( 'logo/symbol.svg' ) ); ?>" alt="" width="48" height="48" class="size-10 md:size-12" />
-			<img src="<?php echo esc_url( growmodo_img( 'logo/wordmark.svg' ) ); ?>" alt="Estatein" width="102" height="21" class="h-[18px] w-auto md:h-5" />
+	<nav class="relative flex h-[99px] items-center justify-between gap-4 px-4 py-5 md:px-8 xl:px-[162px]" aria-label="Primary">
+		<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="relative z-10 flex h-12 w-40 shrink-0 items-center gap-[10px] no-underline">
+			<img src="<?php echo esc_url( growmodo_img( 'logo/symbol.svg' ) ); ?>" alt="" width="48" height="48" class="size-12 shrink-0" />
+			<img src="<?php echo esc_url( growmodo_img( 'logo/wordmark.svg' ) ); ?>" alt="Estatein" width="102" height="21" class="h-[21px] w-auto" />
 		</a>
 
 		<button
@@ -57,7 +57,7 @@ $contact_url = home_url( '/contact/' );
 
 		<div
 			id="primary-nav"
-			class="absolute start-0 top-full z-40 hidden max-h-[80vh] w-full overflow-y-auto border-b border-grey-15 bg-grey-10 px-4 py-4 shadow-lg md:static md:flex md:max-h-none md:w-auto md:items-center md:justify-center md:overflow-visible md:border-0 md:bg-transparent md:p-0 md:shadow-none"
+			class="absolute start-0 top-full z-40 hidden max-h-[80vh] w-full overflow-y-auto border-b border-grey-15 bg-grey-10 px-4 py-4 shadow-lg md:absolute md:start-1/2 md:top-1/2 md:flex md:max-h-none md:w-auto md:-translate-x-1/2 md:-translate-y-1/2 md:items-center md:justify-center md:overflow-visible md:border-0 md:bg-transparent md:p-0 md:shadow-none"
 		>
 			<?php
 			wp_nav_menu(
@@ -70,12 +70,12 @@ $contact_url = home_url( '/contact/' );
 				)
 			);
 			?>
-			<a class="btn-nav mt-3 inline-flex w-full justify-center md:mt-0 md:hidden" href="<?php echo esc_url( $contact_url ); ?>">
+			<a class="btn-contact mt-3 inline-flex w-full justify-center md:mt-0 md:hidden" href="<?php echo esc_url( $contact_url ); ?>">
 				Contact Us
 			</a>
 		</div>
 
-		<a class="btn-nav relative z-10 hidden shrink-0 md:inline-flex" href="<?php echo esc_url( $contact_url ); ?>">
+		<a class="btn-contact relative z-10 hidden shrink-0 md:inline-flex" href="<?php echo esc_url( $contact_url ); ?>">
 			Contact Us
 		</a>
 	</nav>
