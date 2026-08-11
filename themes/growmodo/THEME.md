@@ -79,6 +79,12 @@ Compared against Figma file `7FfQT5aC3gq4wSoY5druDj` (community 1314076616839640
 - Comprehensive Pricing Details + property FAQ cards
 - Gallery images: featured → attachments → `properties/prop-*.png` fallbacks
 
+### Services page fidelity
+- Hero (Elevate…) + 4 shortcut cards (Home chrome: dual-ring icons + corner arrows)
+- Unlock Property Value + Effortless Property Management: 3+1 icon cards + wide abstract CTA
+- Smart Investments: left intro/featured card + right 2×2 category grid
+- Category icons under `assets/images/services/icons/`
+
 ### Remaining / unavoidable
 - Hero circular badge omits full curved-text path (structure + sizes matched)
 - Sticky header (Figma is static) kept for UX
@@ -86,6 +92,7 @@ Compared against Figma file `7FfQT5aC3gq4wSoY5druDj` (community 1314076616839640
 - Exact carousel interaction vs Figma arrow chrome is simplified
 - About value/client icons are stroke SVGs matched to Figma glyphs (MCP asset export was rate-limited)
 - Property Details gallery fills reuse theme prop images (Figma MCP export rate-limited); fee amounts are static demo figures keyed to listing style
+- Services category icons are purple SVG glyphs matched to Figma roles (exact Figma MCP export rate-limited)
 
 ## Activation checklist
 
