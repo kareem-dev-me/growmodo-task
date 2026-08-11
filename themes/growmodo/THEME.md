@@ -67,6 +67,11 @@ Compared against Figma file `7FfQT5aC3gq4wSoY5druDj` (community 1314076616839640
 - Sections: Journey (+ stats + Figma house-model image), Values (intro + 2×2 icon cards), Achievements, 6 Steps, Team (portraits + X button + Say Hello), Valued Clients
 - Assets under `assets/images/about/` (journey + team portraits from Produce UI Figma exports)
 
+### Properties archive fidelity
+- Hero + search/filters (Location, Type, Price, Size, Year) with GET `pre_get_posts` wiring
+- Discover grid + Figma pagination chrome
+- Let's Make it Happen inquiry form (`admin-post` + nonce + honeypot)
+
 ### Remaining / unavoidable
 - Hero circular badge omits full curved-text path (structure + sizes matched)
 - Sticky header (Figma is static) kept for UX

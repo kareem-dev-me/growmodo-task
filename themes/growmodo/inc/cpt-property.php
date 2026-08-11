@@ -159,34 +159,40 @@ function growmodo_seed_properties() {
 
 	$demos = array(
 		array(
-			'title'   => 'Seaside Serenity Villa',
-			'excerpt' => 'A stunning 4-bedroom, 3-bathroom villa in a peaceful suburban neighborhood.',
-			'price'   => '$550,000',
-			'beds'    => '4-Bedroom',
-			'baths'   => '3-Bathroom',
-			'area'    => '2,500 Square Feet',
-			'type'    => 'Villa',
-			'image'   => 'properties/prop-1.png',
+			'title'    => 'Seaside Serenity Villa',
+			'excerpt'  => 'A stunning 4-bedroom, 3-bathroom villa in a peaceful suburban neighborhood.',
+			'price'    => '$550,000',
+			'beds'     => '4-Bedroom',
+			'baths'    => '3-Bathroom',
+			'area'     => '2,500 Square Feet',
+			'type'     => 'Villa',
+			'location' => 'Coastal Estates',
+			'year'     => '2020+',
+			'image'    => 'properties/prop-1.png',
 		),
 		array(
-			'title'   => 'Metropolitan Haven',
-			'excerpt' => 'A chic and fully-furnished 2-bedroom apartment with panoramic city views.',
-			'price'   => '$550,000',
-			'beds'    => '2-Bedroom',
-			'baths'   => '2-Bathroom',
-			'area'    => '2,000 Square Feet',
-			'type'    => 'Villa',
-			'image'   => 'properties/prop-2.png',
+			'title'    => 'Metropolitan Haven',
+			'excerpt'  => 'A chic and fully-furnished 2-bedroom apartment with panoramic city views.',
+			'price'    => '$550,000',
+			'beds'     => '2-Bedroom',
+			'baths'    => '2-Bathroom',
+			'area'     => '2,000 Square Feet',
+			'type'     => 'Apartment',
+			'location' => 'Metropolitan City',
+			'year'     => '2010-2019',
+			'image'    => 'properties/prop-2.png',
 		),
 		array(
-			'title'   => 'Rustic Retreat Cottage',
-			'excerpt' => 'An elegant 3-bedroom, 2.5-bathroom townhouse in a gated community.',
-			'price'   => '$550,000',
-			'beds'    => '3-Bedroom',
-			'baths'   => '3-Bathroom',
-			'area'    => '2,200 Square Feet',
-			'type'    => 'Villa',
-			'image'   => 'properties/prop-3.png',
+			'title'    => 'Rustic Retreat Cottage',
+			'excerpt'  => 'An elegant 3-bedroom, 2.5-bathroom townhouse in a gated community.',
+			'price'    => '$550,000',
+			'beds'     => '3-Bedroom',
+			'baths'    => '3-Bathroom',
+			'area'     => '2,200 Square Feet',
+			'type'     => 'Townhouse',
+			'location' => 'Suburbia',
+			'year'     => '2020+',
+			'image'    => 'properties/prop-3.png',
 		),
 	);
 
@@ -213,8 +219,9 @@ function growmodo_seed_properties() {
 		update_post_meta( $post_id, '_bedrooms', $demo['beds'] );
 		update_post_meta( $post_id, '_bathrooms', $demo['baths'] );
 		update_post_meta( $post_id, '_area', $demo['area'] );
-		update_post_meta( $post_id, '_location', 'Coastal Estates' );
+		update_post_meta( $post_id, '_location', $demo['location'] ?? 'Coastal Estates' );
 		update_post_meta( $post_id, '_property_type', $demo['type'] ?? 'Villa' );
+		update_post_meta( $post_id, '_build_year', $demo['year'] ?? '2020+' );
 
 		$path = GROWMODO_DIR . '/assets/images/' . $demo['image'];
 		if ( file_exists( $path ) ) {
@@ -245,6 +252,102 @@ function growmodo_maybe_seed_properties() {
 	growmodo_seed_properties();
 }
 add_action( 'init', 'growmodo_maybe_seed_properties', 20 );
+
+/**
+ * Apply Properties archive search/filter GET params.
+ *
+ * @param WP_Query $query Query.
+ */
+function growmodo_filter_property_archive( $query ) {
+	if ( is_admin() || ! $query->is_main_query() || ! $query->is_post_type_archive( 'property' ) ) {
+		return;
+	}
+
+	// phpcs:disable WordPress.Security.NonceVerification.Recommended
+	$q_search   = isset( $_GET['q'] ) ? sanitize_text_field( wp_unslash( $_GET['q'] ) ) : '';
+	$q_location = isset( $_GET['location'] ) ? sanitize_text_field( wp_unslash( $_GET['location'] ) ) : '';
+	$q_type     = isset( $_GET['property_type'] ) ? sanitize_text_field( wp_unslash( $_GET['property_type'] ) ) : '';
+	$q_price    = isset( $_GET['price'] ) ? sanitize_text_field( wp_unslash( $_GET['price'] ) ) : '';
+	$q_size     = isset( $_GET['size'] ) ? sanitize_text_field( wp_unslash( $_GET['size'] ) ) : '';
+	$q_year     = isset( $_GET['year'] ) ? sanitize_text_field( wp_unslash( $_GET['year'] ) ) : '';
+	// phpcs:enable
+
+	if ( '' !== $q_search ) {
+		$query->set( 's', $q_search );
+	}
+
+	$query->set( 'posts_per_page', 3 );
+
+	$meta_query = array( 'relation' => 'AND' );
+
+	if ( '' !== $q_location ) {
+		$meta_query[] = array(
+			'key'     => '_location',
+			'value'   => $q_location,
+			'compare' => 'LIKE',
+		);
+	}
+
+	if ( '' !== $q_type ) {
+		$meta_query[] = array(
+			'key'     => '_property_type',
+			'value'   => $q_type,
+			'compare' => '=',
+		);
+	}
+
+	if ( '' !== $q_price ) {
+		// Price is stored as display string; match seeded buckets loosely.
+		$price_map = array(
+			'under-500k' => array( 'Under', '250', '300', '400', '450' ),
+			'500k-750k'  => array( '550', '600', '650', '700', '750' ),
+			'750k-plus'  => array( '800', '900', '1,' ),
+		);
+		if ( isset( $price_map[ $q_price ] ) ) {
+			$or = array( 'relation' => 'OR' );
+			foreach ( $price_map[ $q_price ] as $needle ) {
+				$or[] = array(
+					'key'     => '_price',
+					'value'   => $needle,
+					'compare' => 'LIKE',
+				);
+			}
+			$meta_query[] = $or;
+		}
+	}
+
+	if ( '' !== $q_size ) {
+		$size_map = array(
+			'under-2000' => array( '1,', '1.5', '1800', '1900' ),
+			'2000-2500'  => array( '2,000', '2,200', '2,500', '2000', '2200', '2500' ),
+			'2500-plus'  => array( '2,600', '3,', '2600', '3000' ),
+		);
+		if ( isset( $size_map[ $q_size ] ) ) {
+			$or = array( 'relation' => 'OR' );
+			foreach ( $size_map[ $q_size ] as $needle ) {
+				$or[] = array(
+					'key'     => '_area',
+					'value'   => $needle,
+					'compare' => 'LIKE',
+				);
+			}
+			$meta_query[] = $or;
+		}
+	}
+
+	if ( '' !== $q_year ) {
+		$meta_query[] = array(
+			'key'     => '_build_year',
+			'value'   => $q_year,
+			'compare' => 'LIKE',
+		);
+	}
+
+	if ( count( $meta_query ) > 1 ) {
+		$query->set( 'meta_query', $meta_query );
+	}
+}
+add_action( 'pre_get_posts', 'growmodo_filter_property_archive' );
 
 /**
  * Attach a local theme image to a post.

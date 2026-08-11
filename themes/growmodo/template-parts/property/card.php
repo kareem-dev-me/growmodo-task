@@ -12,8 +12,8 @@ if ( '' === $type ) {
 	$type = 'Villa';
 }
 ?>
-<article <?php post_class( 'card-surface flex h-full flex-col gap-[30px] overflow-hidden rounded-xl p-6 md:p-10' ); ?>>
-	<a href="<?php the_permalink(); ?>" class="block h-[220px] overflow-hidden rounded-[10px] no-underline md:h-[318px]">
+<article <?php post_class( 'card-surface flex h-full flex-col gap-[30px] overflow-hidden rounded-xl p-6 xl:p-10' ); ?>>
+	<a href="<?php the_permalink(); ?>" class="block aspect-[432/318] overflow-hidden rounded-[10px] no-underline md:h-[318px] md:aspect-auto">
 		<?php if ( has_post_thumbnail() ) : ?>
 			<?php
 			the_post_thumbnail(
