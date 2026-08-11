@@ -170,4 +170,58 @@
     border-top: 2.4px solid #ffffff;
     border-right: 2.4px solid #ffffff;
   }
+
+  /* About — Navigating steps (Figma purple corner + divider) */
+  .step-card {
+    @apply flex h-full flex-col;
+  }
+
+  .step-card__label {
+    @apply relative px-5 py-4 text-lg font-medium leading-[1.5] text-absolute-white md:text-xl;
+  }
+
+  .step-card__label::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    height: 1px;
+    background: linear-gradient(90deg, #703bf7 0%, #262626 42%, #262626 100%);
+  }
+
+  .step-card__body {
+    @apply relative flex flex-1 flex-col gap-3.5 overflow-hidden rounded-xl border border-grey-15 bg-grey-08 p-6 md:gap-5 md:p-[30px] xl:p-[50px];
+  }
+
+  .step-card__body::before {
+    content: "";
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    width: 2px;
+    height: 55%;
+    background: linear-gradient(180deg, #703bf7 0%, rgba(112, 59, 247, 0) 100%);
+    pointer-events: none;
+  }
+
+  .step-card__body::after {
+    content: "";
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    width: 42%;
+    height: 2px;
+    background: linear-gradient(90deg, #703bf7 0%, rgba(112, 59, 247, 0) 100%);
+    pointer-events: none;
+  }
+
+  .step-card__glow {
+    pointer-events: none;
+    position: absolute;
+    inset-block-start: -40%;
+    inset-inline-start: -20%;
+    width: 70%;
+    height: 90%;
+    background: radial-gradient(ellipse at top left, rgba(112, 59, 247, 0.22) 0%, rgba(112, 59, 247, 0) 65%);
+  }
 }

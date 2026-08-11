@@ -9,7 +9,7 @@ $steps = array(
 	array(
 		'num'   => '01',
 		'title' => 'Discover a World of Possibilities',
-		'body'  => 'Your journey begins with exploring our carefully curated property listings. Use our intuitive search tools to filter properties based on your preferences, including location, type, and budget.',
+		'body'  => 'Your journey begins with exploring our carefully curated property listings. Use our intuitive search tools to filter properties based on your preferences, including location, type, size, and budget.',
 	),
 	array(
 		'num'   => '02',
@@ -29,7 +29,7 @@ $steps = array(
 	array(
 		'num'   => '05',
 		'title' => 'Making Informed Decisions',
-		'body'  => 'Before making an offer, our team will assist you with due diligence, including property inspections, legal checks, and market analysis. We want you to be fully informed.',
+		'body'  => 'Before making an offer, our team will assist you with due diligence, including property inspections, legal checks, and market analysis. We want you to be fully informed and confident in your choice.',
 	),
 	array(
 		'num'   => '06',
@@ -50,15 +50,16 @@ $steps = array(
 	);
 	?>
 
-	<div class="grid gap-[30px] md:grid-cols-2 xl:grid-cols-3">
+	<div class="grid gap-x-[30px] gap-y-10 md:grid-cols-2 xl:grid-cols-3 xl:gap-y-[50px]">
 		<?php foreach ( $steps as $step ) : ?>
-			<article class="flex flex-col">
-				<p class="rounded-t-xl border border-b-0 border-grey-15 border-s-2 border-s-purple-60 px-5 py-3.5 text-lg font-medium text-absolute-white md:text-xl">
-					Step <?php echo esc_html( $step['num'] ); ?>
-				</p>
-				<div class="flex flex-1 flex-col gap-3.5 rounded-b-xl border border-grey-15 border-s-2 border-s-purple-60 bg-grey-08 p-6 md:gap-5 md:p-[30px] xl:p-10">
-					<h3 class="text-xl font-semibold leading-[1.5] md:text-2xl"><?php echo esc_html( $step['title'] ); ?></h3>
-					<p class="text-body"><?php echo esc_html( $step['body'] ); ?></p>
+			<article class="step-card">
+				<p class="step-card__label">Step <?php echo esc_html( $step['num'] ); ?></p>
+				<div class="step-card__body">
+					<span class="step-card__glow" aria-hidden="true"></span>
+					<h3 class="relative z-10 text-xl font-semibold leading-[1.5] md:text-2xl xl:text-[26px]">
+						<?php echo esc_html( $step['title'] ); ?>
+					</h3>
+					<p class="text-body relative z-10"><?php echo esc_html( $step['body'] ); ?></p>
 				</div>
 			</article>
 		<?php endforeach; ?>
