@@ -10,12 +10,34 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
+ * Theme image URI helper.
+ *
+ * @param string $relative Path under assets/images/.
+ * @return string
+ */
+function growmodo_img( $relative ) {
+	return GROWMODO_URI . '/assets/images/' . ltrim( $relative, '/' );
+}
+
+/**
  * Fallback primary menu when none is assigned.
  */
 function growmodo_fallback_menu() {
-	echo '<ul class="mt-3 flex flex-col gap-2 md:mt-0 md:flex-row md:items-center md:gap-6">';
-	echo '<li><a class="text-white/90 no-underline hover:text-white" href="' . esc_url( home_url( '/' ) ) . '">Home</a></li>';
-	echo '<li><a class="text-white/90 no-underline hover:text-white" href="#features">Features</a></li>';
+	$items = array(
+		array( 'label' => 'Home', 'url' => home_url( '/' ) ),
+		array( 'label' => 'About Us', 'url' => home_url( '/about/' ) ),
+		array( 'label' => 'Properties', 'url' => get_post_type_archive_link( 'property' ) ?: home_url( '/properties/' ) ),
+		array( 'label' => 'Services', 'url' => home_url( '/services/' ) ),
+	);
+
+	echo '<ul class="flex flex-col gap-2 md:flex-row md:items-center md:gap-[30px]">';
+	foreach ( $items as $item ) {
+		printf(
+			'<li><a class="text-lg font-medium text-absolute-white no-underline hover:text-purple-75" href="%s">%s</a></li>',
+			esc_url( $item['url'] ),
+			esc_html( $item['label'] )
+		);
+	}
 	echo '</ul>';
 }
 

@@ -5,44 +5,33 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<?php wp_head(); ?>
 </head>
-<body <?php body_class( 'min-h-screen flex flex-col' ); ?>>
+<body <?php body_class( 'min-h-screen flex flex-col bg-grey-08 text-absolute-white' ); ?>>
 <?php wp_body_open(); ?>
 
-<a class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:bg-white focus:px-3 focus:py-2" href="#main">
+<a class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:bg-grey-10 focus:px-3 focus:py-2" href="#main">
 	Skip to content
 </a>
 
-<header class="site-header border-b border-brand-800/40">
-	<nav class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-4" aria-label="Primary">
-		<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="font-display text-xl font-semibold tracking-tight text-white no-underline">
-			<?php bloginfo( 'name' ); ?>
+<header class="site-header border-b border-grey-15 bg-grey-10">
+	<!-- Replaced in T2 -->
+	<nav class="container-estatein flex items-center justify-between gap-4 py-5" aria-label="Primary">
+		<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="flex items-center gap-3 no-underline">
+			<img src="<?php echo esc_url( growmodo_img( 'logo/symbol.svg' ) ); ?>" alt="" width="48" height="48" class="size-12" />
+			<img src="<?php echo esc_url( growmodo_img( 'logo/wordmark.svg' ) ); ?>" alt="<?php bloginfo( 'name' ); ?>" width="102" height="21" class="h-5 w-auto" />
 		</a>
-
-		<button
-			type="button"
-			class="inline-flex items-center rounded-md border border-white/30 px-3 py-2 text-sm text-white md:hidden"
-			data-collapse-toggle="primary-nav"
-			aria-controls="primary-nav"
-			aria-expanded="false"
-		>
-			<span class="sr-only">Open menu</span>
-			<svg class="h-5 w-5" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-			</svg>
-		</button>
-
-		<div id="primary-nav" class="hidden w-full md:block md:w-auto">
+		<div class="hidden md:block">
 			<?php
 			wp_nav_menu(
 				array(
 					'theme_location' => 'primary',
 					'container'      => false,
-					'menu_class'     => 'mt-3 flex flex-col gap-2 md:mt-0 md:flex-row md:items-center md:gap-6',
+					'menu_class'     => 'flex items-center gap-[30px]',
 					'fallback_cb'    => 'growmodo_fallback_menu',
 				)
 			);
 			?>
 		</div>
+		<a class="btn-nav hidden md:inline-flex" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Contact Us</a>
 	</nav>
 </header>
 

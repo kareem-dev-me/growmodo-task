@@ -1,0 +1,1 @@
+console.info(`[growmodo] admin bundle loaded`);
