@@ -17,3 +17,4 @@ require_once GROWMODO_DIR . '/inc/setup.php';
 require_once GROWMODO_DIR . '/inc/assets.php';
 require_once GROWMODO_DIR . '/inc/helpers.php';
 require_once GROWMODO_DIR . '/inc/nav-walker.php';
+require_once GROWMODO_DIR . '/inc/forms.php';
