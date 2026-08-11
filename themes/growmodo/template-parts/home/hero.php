@@ -32,7 +32,7 @@ $services       = array(
 ?>
 <section id="hero" class="bg-grey-08">
 	<div class="relative flex flex-col lg:flex-row lg:items-stretch">
-		<div class="order-2 flex w-full flex-col justify-center gap-10 px-4 py-12 md:gap-[50px] md:px-8 md:py-16 lg:order-1 lg:w-1/2 xl:gap-[60px] xl:py-[100px] xl:ps-[162px] xl:pe-20">
+		<div class="order-2 flex w-full flex-col justify-center gap-10 px-4 py-12 md:gap-[50px] md:px-8 md:py-16 lg:order-1 lg:w-1/2 xl:gap-[60px] xl:py-[100px] xl:ps-20 xl:pe-20 min-[1920px]:ps-[162px]">
 			<div class="relative max-w-[758px]">
 				<div class="flex flex-col gap-5 md:gap-6">
 					<h1 class="text-[28px] font-semibold leading-[1.2] text-absolute-white md:text-5xl xl:text-[60px]">

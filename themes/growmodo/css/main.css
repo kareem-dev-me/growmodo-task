@@ -54,8 +54,9 @@
 }
 
 @layer components {
+  /* Laptop 1440 ≈ 80px side pad; Desktop 1920 = 162px */
   .container-estatein {
-    @apply mx-auto w-full max-w-content px-4 sm:px-6 md:px-8 xl:px-[162px];
+    @apply mx-auto w-full max-w-content px-4 sm:px-6 md:px-8 xl:px-20 min-[1920px]:px-[162px];
   }
 
   /* Mobile (390) / tablet: tighten section vertical rhythm to Figma mobile frames */
@@ -100,8 +101,13 @@
     @apply rounded-xl border border-grey-15 bg-grey-10;
   }
 
+  /* Figma laptop 33px / desktop 43px pills */
   .property-badge {
-    @apply inline-flex h-[43px] items-center gap-1 rounded-[28px] border border-grey-15 bg-grey-10 px-3.5 py-2 text-lg font-medium leading-[1.5] text-absolute-white;
+    @apply inline-flex h-[33px] items-center gap-1 rounded-[28px] border border-grey-15 bg-grey-10 px-3.5 text-sm font-medium leading-[1.5] text-absolute-white min-[1920px]:h-[43px] min-[1920px]:text-lg;
+  }
+
+  .property-badge img {
+    @apply size-5 shrink-0 min-[1920px]:size-6;
   }
 
   /* Figma hero circular badge 175×175 — Urbanist Medium ~14px ring text */

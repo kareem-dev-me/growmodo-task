@@ -10,7 +10,7 @@ $contact_url = home_url( '/contact/' );
 <header class="site-header sticky top-0 z-50 border-b border-grey-15 bg-grey-10">
 	<div
 		id="promo-banner"
-		class="relative grid grid-cols-[2rem_minmax(0,1fr)_2rem] items-center gap-2.5 overflow-hidden border-b border-grey-15 bg-grey-10 px-4 py-[14px] md:py-[18px] xl:grid-cols-[2.5rem_minmax(0,1fr)_2.5rem] xl:gap-4 xl:px-[162px]"
+		class="relative grid grid-cols-[2rem_minmax(0,1fr)_2rem] items-center gap-2.5 overflow-hidden border-b border-grey-15 bg-grey-10 px-4 py-[14px] md:py-[18px] xl:grid-cols-[2.5rem_minmax(0,1fr)_2.5rem] xl:gap-4 xl:px-20 min-[1920px]:px-[162px]"
 	>
 		<img
 			src="<?php echo esc_url( growmodo_img( 'patterns/banner-abstract.svg' ) ); ?>"
@@ -37,7 +37,7 @@ $contact_url = home_url( '/contact/' );
 		</button>
 	</div>
 
-	<nav class="relative flex h-[99px] items-center justify-between gap-4 px-4 py-5 md:px-8 xl:px-[162px]" aria-label="Primary">
+	<nav class="relative flex h-[99px] items-center justify-between gap-4 px-4 py-5 md:px-8 xl:px-20 min-[1920px]:px-[162px]" aria-label="Primary">
 		<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="relative z-10 flex h-12 w-40 shrink-0 items-center gap-[10px] no-underline">
 			<img src="<?php echo esc_url( growmodo_img( 'logo/symbol.svg' ) ); ?>" alt="" width="48" height="48" class="size-12 shrink-0" />
 			<img src="<?php echo esc_url( growmodo_img( 'logo/wordmark.svg' ) ); ?>" alt="Estatein" width="102" height="21" class="h-[21px] w-auto" />
