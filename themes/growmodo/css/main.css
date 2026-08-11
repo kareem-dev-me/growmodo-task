@@ -34,14 +34,14 @@
   }
 
   body {
-    @apply bg-grey-08 text-absolute-white font-sans antialiased;
+    @apply bg-grey-08 font-sans text-lg font-medium leading-[1.5] text-absolute-white antialiased;
   }
 
   h1,
   h2,
   h3,
   h4 {
-    @apply font-semibold tracking-tight text-balance text-absolute-white;
+    @apply font-semibold leading-[1.5] text-balance text-absolute-white;
   }
 
   a {
@@ -58,19 +58,44 @@
     @apply mx-auto w-full max-w-content px-4 sm:px-6 md:px-8 xl:px-[162px];
   }
 
+  .heading-section {
+    @apply text-[28px] font-semibold leading-[1.5] text-absolute-white md:text-4xl xl:text-[48px];
+  }
+
+  .text-body {
+    @apply text-base font-medium leading-[1.5] text-grey-60 md:text-lg;
+  }
+
   .btn-primary {
-    @apply inline-flex items-center justify-center rounded-[10px] bg-purple-60 px-5 py-3.5 text-base font-medium text-absolute-white transition hover:bg-purple-75 md:px-6 md:py-[18px] md:text-lg;
+    @apply inline-flex items-center justify-center rounded-[10px] bg-purple-60 px-6 py-[18px] text-lg font-medium leading-[1.5] text-absolute-white transition hover:bg-[#8254f8];
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center rounded-[10px] border border-grey-15 bg-transparent px-5 py-3.5 text-base font-medium text-absolute-white transition hover:bg-grey-10 md:px-6 md:py-[18px] md:text-lg;
+    @apply inline-flex items-center justify-center rounded-[10px] border border-grey-15 bg-grey-10 px-6 py-[18px] text-lg font-medium leading-[1.5] text-absolute-white transition hover:bg-grey-08;
   }
 
   .btn-nav {
-    @apply inline-flex items-center justify-center rounded-[10px] border border-grey-15 bg-grey-08 px-5 py-3 text-base font-medium text-absolute-white md:px-6 md:py-3.5 md:text-lg;
+    @apply inline-flex items-center justify-center rounded-[10px] border border-grey-15 bg-grey-08 px-6 py-3.5 text-lg font-medium leading-[1.5] text-absolute-white;
   }
 
+  .btn-nav-active {
+    @apply inline-flex items-center justify-center rounded-[10px] border border-grey-15 bg-grey-08 px-6 py-[14px] text-lg font-medium leading-[1.5] text-absolute-white;
+  }
+
+  .btn-contact {
+    @apply inline-flex items-center justify-center rounded-[10px] border border-grey-15 bg-grey-08 px-6 py-4 text-lg font-medium leading-[1.5] text-absolute-white;
+  }
+
+  /* Figma cards use Grey/08 */
   .card-surface {
+    @apply rounded-xl border border-grey-15 bg-grey-08;
+  }
+
+  .card-elevated {
     @apply rounded-xl border border-grey-15 bg-grey-10;
+  }
+
+  .property-badge {
+    @apply inline-flex items-center gap-1 rounded-[28px] border border-grey-15 bg-grey-10 px-3.5 py-2 text-lg font-medium leading-[1.5] text-absolute-white;
   }
 }
