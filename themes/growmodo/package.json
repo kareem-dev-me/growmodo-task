@@ -1,0 +1,22 @@
+{
+  "name": "growmodo-theme",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite build --watch",
+    "build": "vite build",
+    "zip": "gulp zip"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.11",
+    "gulp": "^5.0.0",
+    "gulp-zip": "^6.1.0",
+    "tailwindcss": "^4.1.11",
+    "vite": "^8.0.0",
+    "vite-plugin-imagemin": "^0.6.1"
+  },
+  "dependencies": {
+    "flowbite": "^4.0.0"
+  }
+}

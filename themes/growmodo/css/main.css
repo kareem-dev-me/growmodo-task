@@ -1,0 +1,44 @@
+@import "tailwindcss";
+@import "flowbite/src/themes/default";
+@plugin "flowbite/plugin";
+@source "../node_modules/flowbite";
+@source "../*.php";
+@source "../template-parts/**/*.php";
+@source "../inc/**/*.php";
+
+@theme {
+  --font-sans: "DM Sans", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", "Georgia", ui-serif, serif;
+
+  --color-brand-50: #eef8f6;
+  --color-brand-100: #d5efe9;
+  --color-brand-200: #aadfd2;
+  --color-brand-300: #74c7b5;
+  --color-brand-400: #42a994;
+  --color-brand-500: #288f7a;
+  --color-brand-600: #1f7363;
+  --color-brand-700: #1a5c50;
+  --color-brand-800: #174a41;
+  --color-brand-900: #143e37;
+  --color-brand-950: #0a231f;
+
+  --color-ink: #121816;
+  --color-paper: #f7faf8;
+  --color-accent: #c45c26;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-paper text-ink font-sans antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-display tracking-tight text-balance;
+  }
+}

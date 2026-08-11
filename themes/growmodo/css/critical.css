@@ -1,0 +1,22 @@
+/* Tiny above-the-fold styles — keep this file small */
+:root {
+  --color-brand-700: #1a5c50;
+  --color-ink: #121816;
+  --color-paper: #f7faf8;
+}
+
+html {
+  background-color: var(--color-paper);
+}
+
+body {
+  margin: 0;
+  color: var(--color-ink);
+  background-color: var(--color-paper);
+  font-family: "DM Sans", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+}
+
+.site-header {
+  background: var(--color-brand-700);
+  color: #fff;
+}
