@@ -32,7 +32,7 @@ $services       = array(
 ?>
 <section id="hero" class="bg-grey-08">
 	<div class="relative flex flex-col lg:flex-row lg:items-stretch">
-		<div class="order-2 flex w-full flex-col justify-center gap-10 px-4 py-12 md:gap-[50px] md:px-8 md:py-16 lg:order-1 lg:w-1/2 xl:max-w-[960px] xl:gap-[60px] xl:py-[100px] xl:ps-[162px] xl:pe-20">
+		<div class="order-2 flex w-full flex-col justify-center gap-10 px-4 py-12 md:gap-[50px] md:px-8 md:py-16 lg:order-1 lg:w-1/2 xl:gap-[60px] xl:py-[100px] xl:ps-[162px] xl:pe-20">
 			<div class="relative max-w-[758px]">
 				<div class="flex flex-col gap-5 md:gap-6">
 					<h1 class="text-[28px] font-semibold leading-[1.2] text-absolute-white md:text-5xl xl:text-[60px]">
@@ -65,47 +65,50 @@ $services       = array(
 			</div>
 		</div>
 
-		<div class="relative order-1 min-h-[280px] w-full overflow-hidden bg-grey-10 sm:min-h-[420px] lg:order-2 lg:min-h-[814px] lg:w-1/2 xl:max-w-[960px]">
-			<img
-				src="<?php echo esc_url( growmodo_img( 'patterns/hero-abstract.svg' ) ); ?>"
-				alt=""
-				width="1920"
-				height="1280"
-				class="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-50"
-				aria-hidden="true"
-			/>
-			<img
-				src="<?php echo esc_url( growmodo_img( 'hero/building-1.png' ) ); ?>"
-				alt="Modern glass building facade"
-				width="920"
-				height="814"
-				class="relative z-10 h-full w-full object-cover"
-				fetchpriority="high"
-				decoding="async"
-			/>
-			<div class="pointer-events-none absolute inset-0 z-20" style="background-image:linear-gradient(234.98deg, rgb(42, 33, 63) 8.76%, rgba(25, 25, 25, 0) 50.09%);"></div>
+		<div class="relative order-1 w-full lg:order-2 lg:w-1/2">
+			<?php /* Inner clip so the badge can hang centered over the image edge. */ ?>
+			<div class="relative min-h-[320px] w-full overflow-hidden bg-grey-10 sm:min-h-[420px] lg:min-h-[814px] lg:h-full">
+				<img
+					src="<?php echo esc_url( growmodo_img( 'patterns/hero-abstract.svg' ) ); ?>"
+					alt=""
+					width="1920"
+					height="1280"
+					class="pointer-events-none absolute inset-0 size-full object-cover opacity-50"
+					aria-hidden="true"
+				/>
+				<img
+					src="<?php echo esc_url( growmodo_img( 'hero/building-1.png' ) ); ?>"
+					alt="Modern glass building facade"
+					width="920"
+					height="814"
+					class="absolute inset-0 z-10 size-full object-cover"
+					fetchpriority="high"
+					decoding="async"
+				/>
+				<div class="pointer-events-none absolute inset-0 z-20" style="background-image:linear-gradient(234.98deg, rgb(42, 33, 63) 8.76%, rgba(25, 25, 25, 0) 50.09%);"></div>
+			</div>
 
-			<?php /* Mobile / tablet: badge on hero image. */ ?>
+			<?php /* Mobile: centered on image / text junction. */ ?>
 			<?php
 			get_template_part(
 				'template-parts/shared/dream',
 				'badge',
 				array(
 					'url'   => $properties_url,
-					'class' => 'absolute start-4 top-[42%] z-30 size-[100px] -translate-y-1/2 md:size-[120px] lg:hidden',
+					'class' => 'absolute start-1/2 bottom-0 z-30 size-[100px] -translate-x-1/2 translate-y-1/2 md:size-[120px] lg:hidden',
 				)
 			);
 			?>
 		</div>
 
-		<?php /* Desktop: badge on text/image seam (Figma 175×175). */ ?>
+		<?php /* Desktop: centered on the text/image seam. */ ?>
 		<?php
 		get_template_part(
 			'template-parts/shared/dream',
 			'badge',
 			array(
 				'url'   => $properties_url,
-				'class' => 'absolute start-1/2 top-[220px] z-30 hidden size-[129px] -translate-x-1/2 lg:grid xl:top-[250px] xl:size-[175px]',
+				'class' => 'absolute start-1/2 top-[240px] z-30 hidden size-[129px] -translate-x-1/2 lg:grid xl:top-[280px] xl:size-[175px]',
 			)
 		);
 		?>
