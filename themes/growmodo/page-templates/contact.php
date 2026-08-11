@@ -10,7 +10,7 @@ get_header();
 
 <section class="border-b border-grey-15 bg-grey-10">
 	<div class="container-estatein py-16 md:py-24">
-		<img src="<?php echo esc_url( growmodo_img( 'icons/star.svg' ) ); ?>" alt="" width="68" height="30" class="mb-3 h-[30px] w-auto" />
+		<img src="<?php echo esc_url( growmodo_img( 'icons/section-sparkles.svg' ) ); ?>" alt="" width="68" height="30" class="mb-3 h-[30px] w-auto" />
 		<h1 class="text-4xl font-semibold md:text-5xl">Get in Touch With Estatein</h1>
 		<p class="mt-4 max-w-3xl text-lg font-medium text-grey-60">
 			We're here to help you navigate the world of real estate. Reach out with questions, opportunities, or next steps.
@@ -19,7 +19,7 @@ get_header();
 </section>
 
 <section id="form" class="container-estatein py-16 md:py-24">
-	<img src="<?php echo esc_url( growmodo_img( 'icons/star.svg' ) ); ?>" alt="" width="68" height="30" class="mb-3 h-[30px] w-auto" />
+	<img src="<?php echo esc_url( growmodo_img( 'icons/section-sparkles.svg' ) ); ?>" alt="" width="68" height="30" class="mb-3 h-[30px] w-auto" />
 	<h2 class="text-3xl font-semibold md:text-5xl">Let's Connect</h2>
 	<p class="mt-3 max-w-3xl text-lg font-medium text-grey-60">
 		Send us a message and an Estatein advisor will respond promptly.
@@ -59,7 +59,7 @@ get_header();
 </section>
 
 <section id="offices" class="container-estatein pb-16 md:pb-24">
-	<img src="<?php echo esc_url( growmodo_img( 'icons/star.svg' ) ); ?>" alt="" width="68" height="30" class="mb-3 h-[30px] w-auto" />
+	<img src="<?php echo esc_url( growmodo_img( 'icons/section-sparkles.svg' ) ); ?>" alt="" width="68" height="30" class="mb-3 h-[30px] w-auto" />
 	<h2 class="text-3xl font-semibold md:text-5xl">Discover Our Office Locations</h2>
 	<p class="mt-3 max-w-3xl text-lg font-medium text-grey-60">Visit Estatein in person or connect with a regional team.</p>
 	<div class="mt-10 grid gap-6 md:grid-cols-2">

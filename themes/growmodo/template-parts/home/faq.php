@@ -23,7 +23,7 @@ $faqs = array(
 <section id="faq" class="container-estatein py-16 md:py-24">
 	<div class="mb-10 flex flex-col gap-6 md:mb-14 md:flex-row md:items-end md:justify-between">
 		<div class="max-w-4xl">
-			<img src="<?php echo esc_url( growmodo_img( 'icons/star.svg' ) ); ?>" alt="" width="68" height="30" class="mb-3 h-[30px] w-auto" />
+			<img src="<?php echo esc_url( growmodo_img( 'icons/section-sparkles.svg' ) ); ?>" alt="" width="68" height="30" class="mb-3 h-[30px] w-auto" />
 			<h2 class="text-3xl font-semibold md:text-4xl lg:text-5xl">Frequently Asked Questions</h2>
 			<p class="mt-3 max-w-3xl text-base font-medium text-grey-60 md:text-lg">
 				Find answers to common questions about Estatein's services, property listings, and the real estate process. We're here to provide clarity and assist you every step of the way.

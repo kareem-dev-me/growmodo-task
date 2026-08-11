@@ -10,7 +10,7 @@ get_header();
 
 <section class="border-b border-grey-15 bg-grey-10">
 	<div class="container-estatein py-16 md:py-24">
-		<img src="<?php echo esc_url( growmodo_img( 'icons/star.svg' ) ); ?>" alt="" width="68" height="30" class="mb-3 h-[30px] w-auto" />
+		<img src="<?php echo esc_url( growmodo_img( 'icons/section-sparkles.svg' ) ); ?>" alt="" width="68" height="30" class="mb-3 h-[30px] w-auto" />
 		<h1 class="text-4xl font-semibold md:text-5xl">Find Your Dream Property</h1>
 		<p class="mt-4 max-w-3xl text-lg font-medium text-grey-60">
 			Welcome to Estatein's Property Listing page, where your dream property awaits. Explore our curated selection of properties.

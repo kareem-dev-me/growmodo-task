@@ -18,7 +18,7 @@ $properties_url = get_post_type_archive_link( 'property' ) ?: home_url( '/proper
 <section id="properties" class="container-estatein py-16 md:py-24">
 	<div class="mb-10 flex flex-col gap-6 md:mb-14 md:flex-row md:items-end md:justify-between">
 		<div class="max-w-4xl">
-			<img src="<?php echo esc_url( growmodo_img( 'icons/star.svg' ) ); ?>" alt="" width="68" height="30" class="mb-3 h-[30px] w-auto" />
+			<img src="<?php echo esc_url( growmodo_img( 'icons/section-sparkles.svg' ) ); ?>" alt="" width="68" height="30" class="mb-3 h-[30px] w-auto" />
 			<h2 class="text-3xl font-semibold md:text-4xl lg:text-5xl">Featured Properties</h2>
 			<p class="mt-3 max-w-3xl text-base font-medium text-grey-60 md:text-lg">
 				Explore our handpicked selection of featured properties. Each listing offers a glimpse into exceptional homes and investments available through Estatein.

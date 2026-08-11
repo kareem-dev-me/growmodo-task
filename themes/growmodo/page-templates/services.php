@@ -35,7 +35,7 @@ $service_blocks = array(
 
 <section class="border-b border-grey-15 bg-grey-10">
 	<div class="container-estatein py-16 md:py-24">
-		<img src="<?php echo esc_url( growmodo_img( 'icons/star.svg' ) ); ?>" alt="" width="68" height="30" class="mb-3 h-[30px] w-auto" />
+		<img src="<?php echo esc_url( growmodo_img( 'icons/section-sparkles.svg' ) ); ?>" alt="" width="68" height="30" class="mb-3 h-[30px] w-auto" />
 		<h1 class="text-4xl font-semibold md:text-5xl">Elevate Your Real Estate Experience</h1>
 		<p class="mt-4 max-w-3xl text-lg font-medium text-grey-60">
 			Welcome to Estatein's Services page — your gateway to personalized real estate solutions.
@@ -45,7 +45,7 @@ $service_blocks = array(
 
 <?php foreach ( $service_blocks as $block ) : ?>
 	<section id="<?php echo esc_attr( $block['id'] ); ?>" class="container-estatein py-16 md:py-24">
-		<img src="<?php echo esc_url( growmodo_img( 'icons/star.svg' ) ); ?>" alt="" width="68" height="30" class="mb-3 h-[30px] w-auto" />
+		<img src="<?php echo esc_url( growmodo_img( 'icons/section-sparkles.svg' ) ); ?>" alt="" width="68" height="30" class="mb-3 h-[30px] w-auto" />
 		<h2 class="text-3xl font-semibold md:text-5xl"><?php echo esc_html( $block['title'] ); ?></h2>
 		<p class="mt-3 max-w-3xl text-lg font-medium text-grey-60"><?php echo esc_html( $block['intro'] ); ?></p>
 		<div class="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
